@@ -1,8 +1,8 @@
 import { useCallback, useState } from 'react';
-import { MdAdd } from 'react-icons/md';
-import './TodoInsert.scss';
+import { IoMdArrowDown } from 'react-icons/io';
+import './MemoInsert.scss';
 
-const TodoInsert = ({ onInsert }) => {
+const MemoInsert = ({ onInsert }) => {
   const [value, setValue] = useState('');
 
   const onChange = useCallback((e) => {
@@ -20,17 +20,17 @@ const TodoInsert = ({ onInsert }) => {
   );
 
   return (
-    <form className="TodoInsert" onSubmit={onSubmit}>
+    <form className="MemoInsert" onSubmit={onSubmit}>
       <input
-        placeholder="Memo about your own idea"
+        placeholder="Memo about your own"
         value={value}
         onChange={onChange}
       />
       <button type="submit">
-        <MdAdd />
+        <IoMdArrowDown />
       </button>
     </form>
   );
 };
 
-export default TodoInsert;
+export default MemoInsert;

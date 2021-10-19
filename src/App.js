@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
 import Template from './components/Template';
-import TodoInsert from './components/TodoInsert';
+import MemoInsert from './components/MemoInsert';
 import TodoList from './components/TodoList';
 
 const App = () => {
@@ -57,7 +57,7 @@ const App = () => {
 
   return (
     <Template>
-      <TodoInsert onInsert={onInsert} />
+      <MemoInsert onInsert={onInsert} />
       <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
     </Template>
   );
