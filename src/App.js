@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
-import TodoTemplate from './components/TodoTemplate';
+import Template from './components/Template';
 import TodoInsert from './components/TodoInsert';
 import TodoList from './components/TodoList';
 
@@ -56,10 +56,10 @@ const App = () => {
   );
 
   return (
-    <TodoTemplate>
+    <Template>
       <TodoInsert onInsert={onInsert} />
       <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
-    </TodoTemplate>
+    </Template>
   );
 };
 
