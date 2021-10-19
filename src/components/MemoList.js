@@ -1,9 +1,9 @@
-import './TodoList.scss';
+import './MemoList.scss';
 import TodoListItem from './TodoListItem';
 
-const TodoList = ({ todos, onRemove, onToggle }) => {
+const MemoList = ({ todos, onRemove, onToggle }) => {
   return (
-    <div className="TodoList">
+    <div className="MemoList">
       {todos.map((todo) => (
         <TodoListItem
           todo={todo}
@@ -16,4 +16,4 @@ const TodoList = ({ todos, onRemove, onToggle }) => {
   );
 };
 
-export default TodoList;
+export default MemoList;

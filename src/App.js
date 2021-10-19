@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import Template from './components/Template';
 import MemoInsert from './components/MemoInsert';
-import TodoList from './components/TodoList';
+import MemoList from './components/MemoList';
 
 const App = () => {
   const [todos, setTodos] = useState([
@@ -58,7 +58,7 @@ const App = () => {
   return (
     <Template>
       <MemoInsert onInsert={onInsert} />
-      <TodoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
+      <MemoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
     </Template>
   );
 };
