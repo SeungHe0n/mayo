@@ -1,0 +1,38 @@
+.MemoListItem {
+  padding: 1rem;
+  display: flex;
+  background: white;
+  border-radius: 0.6rem;
+  border: 2px solid lightgrey;
+
+  .text {
+    cursor: pointer;
+    flex: 1;
+  }
+
+  &.checked {
+    background: #dee1e4;
+    .text {
+      color: #adb5bd;
+      text-decoration: line-through;
+    }
+    .remove {
+      color: lightgrey;
+    }
+  }
+
+  .remove {
+    display: flex;
+    align-items: flex-start;
+    font-size: 1.5rem;
+    color: #ff6b6b;
+    cursor: pointer;
+    &:hover {
+      color: #ff8787;
+    }
+  }
+
+  & + & {
+    margin-top: 1rem;
+  }
+}

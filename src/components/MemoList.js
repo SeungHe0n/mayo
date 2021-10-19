@@ -1,11 +1,11 @@
 import './MemoList.scss';
-import TodoListItem from './TodoListItem';
+import MemoListItem from './MemoListItem';
 
 const MemoList = ({ todos, onRemove, onToggle }) => {
   return (
     <div className="MemoList">
       {todos.map((todo) => (
-        <TodoListItem
+        <MemoListItem
           todo={todo}
           key={todo.id}
           onRemove={onRemove}
