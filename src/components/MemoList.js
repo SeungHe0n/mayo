@@ -1,16 +1,16 @@
 import './MemoList.scss';
 import MemoListItem from './MemoListItem';
 
-const MemoList = ({ todos, onRemove, onToggle }) => {
+const MemoList = ({ memos, onRemove, onToggle }) => {
   return (
     <div className="MemoList">
-      {todos
+      {memos
         .slice(0)
         .reverse()
-        .map((todo) => (
+        .map((memo) => (
           <MemoListItem
-            todo={todo}
-            key={todo.id}
+            memo={memo}
+            key={memo.id}
             onRemove={onRemove}
             onToggle={onToggle}
           />

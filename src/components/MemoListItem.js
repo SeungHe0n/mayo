@@ -2,8 +2,8 @@ import { MdDelete } from 'react-icons/md';
 import cn from 'classnames';
 import './MemoListItem.scss';
 
-const MemoListItem = ({ todo, onRemove, onToggle }) => {
-  const { id, text, checked } = todo;
+const MemoListItem = ({ memo, onRemove, onToggle }) => {
+  const { id, text, checked } = memo;
 
   return (
     <div className={cn('MemoListItem', { checked })}>

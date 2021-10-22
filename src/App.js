@@ -4,7 +4,7 @@ import MemoInsert from './components/MemoInsert';
 import MemoList from './components/MemoList';
 
 const App = () => {
-  const [todos, setTodos] = useState([
+  const [memos, setMemos] = useState([
     {
       id: 1,
       text: '리액트의 기초 알아보기',
@@ -26,39 +26,39 @@ const App = () => {
 
   const onInsert = useCallback(
     (text) => {
-      const todo = {
+      const memo = {
         id: nextId.current,
         text,
         checked: false,
       };
-      setTodos(todos.concat(todo));
+      setMemos(memos.concat(memo));
       nextId.current += 1;
     },
-    [todos],
+    [memos],
   );
 
   const onRemove = useCallback(
     (id) => {
-      setTodos(todos.filter((todo) => todo.id !== id));
+      setMemos(memos.filter((memo) => memo.id !== id));
     },
-    [todos],
+    [memos],
   );
 
   const onToggle = useCallback(
     (id) => {
-      setTodos(
-        todos.map((todo) =>
-          todo.id === id ? { ...todo, checked: !todo.checked } : todo,
+      setMemos(
+        memos.map((memo) =>
+          memo.id === id ? { ...memo, checked: !memo.checked } : memo,
         ),
       );
     },
-    [todos],
+    [memos],
   );
 
   return (
     <Template>
       <MemoInsert onInsert={onInsert} />
-      <MemoList todos={todos} onRemove={onRemove} onToggle={onToggle} />
+      <MemoList memos={memos} onRemove={onRemove} onToggle={onToggle} />
     </Template>
   );
 };
