@@ -4,6 +4,20 @@
   background: #495057;
   border-radius: 0.6rem;
 
+  textarea {
+    resize: none;
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0.5rem 1rem;
+    font-size: 1.125rem;
+    color: white;
+    &::placeholder {
+      color: lightslategrey;
+    }
+    flex: 1;
+  }
+
   input {
     background: none;
     outline: none;

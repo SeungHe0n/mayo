@@ -19,12 +19,28 @@ const MemoInsert = ({ onInsert }) => {
     [onInsert, value],
   );
 
+  const onKeyDown = (e) => {
+    if (e.shiftKey) {
+      console.log('shift');
+    }
+    if (e.shiftKey && e.which === 13) {
+      console.log('shift + enter');
+    }
+  };
+
+  // const onKeyDown = useCallback((e) => {
+  //   if(e.shiftKey && e.which === 13) {
+  //     alert()
+  //   }
+  // })
+
   return (
     <form className="MemoInsert" onSubmit={onSubmit}>
-      <input
+      <textarea
         placeholder="Memo about your own"
         value={value}
         onChange={onChange}
+        onKeyDown={onKeyDown}
       />
       <button type="submit">
         <IoMdArrowDown />
