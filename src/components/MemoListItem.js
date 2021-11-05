@@ -7,9 +7,7 @@ const MemoListItem = ({ memo, onRemove, onToggle }) => {
 
   return (
     <div className={cn('MemoListItem', { checked })}>
-      <div className="text" onClick={() => onToggle(id)}>
-        {text}
-      </div>
+      <textarea value={text} onClick={() => onToggle(id)} readOnly />
       <div className="remove" onClick={() => onRemove(id)}>
         <MdDelete />
       </div>
