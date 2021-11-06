@@ -7,6 +7,9 @@ const MemoInsert = ({ onInsert }) => {
 
   const onChange = useCallback((e) => {
     setValue(e.target.value);
+    e.target.style.height = '1rem';
+    e.target.style.height = e.target.scrollHeight + 'px';
+    console.log(e.target.scrollHeight);
   }, []);
 
   const onSubmit = useCallback(
@@ -32,7 +35,7 @@ const MemoInsert = ({ onInsert }) => {
   //   if(e.shiftKey && e.which === 13) {
   //     alert()
   //   }
-  // })
+  // });
 
   return (
     <form className="MemoInsert" onSubmit={onSubmit}>

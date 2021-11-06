@@ -5,15 +5,21 @@
   border-radius: 0.6rem;
 
   textarea {
+    padding: 0;
     resize: none;
     background: none;
     outline: none;
     border: none;
-    padding: 0.5rem 1rem;
-    font-size: 1.125rem;
+    margin: 1rem;
+    font-size: 1rem;
     color: white;
+    height: 18px;
+    max-height: 20rem;
+    // font-family: Arial;
+
     &::placeholder {
       color: lightslategrey;
+      // font-size: 1rem;
     }
     flex: 1;
   }
