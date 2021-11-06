@@ -9,7 +9,7 @@ const MemoInsert = ({ onInsert }) => {
     setValue(e.target.value);
     e.target.style.height = '1rem';
     e.target.style.height = e.target.scrollHeight + 'px';
-    console.log(e.target.scrollHeight);
+    // console.log(e.target.scrollHeight);
   }, []);
 
   const onSubmit = useCallback(
