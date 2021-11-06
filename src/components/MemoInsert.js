@@ -18,6 +18,7 @@ const MemoInsert = ({ onInsert }) => {
       setValue('');
 
       e.preventDefault();
+      e.target[0].style.height = '18px';
     },
     [onInsert, value],
   );
