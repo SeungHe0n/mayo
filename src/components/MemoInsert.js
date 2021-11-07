@@ -13,11 +13,16 @@ const MemoInsert = ({ onInsert }) => {
 
   const onSubmit = useCallback(
     (e) => {
-      onInsert(value);
-      setValue('');
+      if (value === '') {
+        alert('내용을 입력해주세요.');
+      } else {
+        onInsert(value);
+        setValue('');
+      }
 
       e.preventDefault();
       e.target[0].style.height = '1.6875rem';
+      e.target[0].focus();
     },
     [onInsert, value],
   );
@@ -44,6 +49,7 @@ const MemoInsert = ({ onInsert }) => {
         value={value}
         onChange={onChange}
         onKeyDown={onKeyDown}
+        autoFocus
       />
       <button type="submit">
         <IoMdArrowDown />
