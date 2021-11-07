@@ -1,24 +1,24 @@
 .MemoInsert {
-  margin: 10px 0;
   display: flex;
   background: #495057;
   border-radius: 1rem;
 
   textarea {
-    padding: 0;
-    resize: none;
     background: none;
     outline: none;
     border: none;
     margin: 1rem;
-    font-size: 1rem;
+    padding: 0;
+    font-size: 1.125rem;
+    font-family: sans-serif;
+    line-height: 1.5;
+    resize: none;
     color: white;
-    height: 18px;
+    height: 1.6875rem;
     max-height: 20rem;
 
     &::placeholder {
       color: lightslategrey;
-      // font-size: 1rem;
     }
     flex: 1;
   }
@@ -33,7 +33,6 @@
     display: flex;
     align-items: center;
     cursor: pointer;
-    transition: 0.1s background ease-in;
 
     &:hover {
       color: coral;
