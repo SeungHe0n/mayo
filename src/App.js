@@ -7,17 +7,17 @@ const App = () => {
   const [memos, setMemos] = useState([
     {
       id: 1,
-      text: '리액트의 기초 알아보기',
-      checked: true,
+      text: '줄바꿈을 사용하고 싶다면\nshift 혹은 ctrl 키를 누른 상태로 enter 키를 치세요',
+      checked: false,
     },
     {
       id: 2,
-      text: '컴포넌트 스타일링해 보기',
+      text: '아이디어를 해결했다면 클릭해서 줄을 그을 수 있어요',
       checked: true,
     },
     {
       id: 3,
-      text: '일정 관리 앱 만들어 보기',
+      text: '위 입력창에 당신의 아이디어나 생각을 입력하세요',
       checked: false,
     },
   ]);

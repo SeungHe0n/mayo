@@ -7,18 +7,25 @@ const MemoInsert = ({ onInsert }) => {
 
   const onChange = useCallback((e) => {
     setValue(e.target.value);
-    e.target.style.height = '1rem';
+    e.target.style.height = '0';
     e.target.style.height = e.target.scrollHeight + 'px';
-    // console.log(e.target.scrollHeight);
   }, []);
 
   const onSubmit = useCallback(
     (e) => {
-      onInsert(value);
+      const trimValue = value.trim();
+
+      if (trimValue === '') {
+        alert('내용을 입력해주세요.');
+      } else {
+        onInsert(trimValue);
+      }
+
       setValue('');
+      e.target[0].style.height = '1.6875rem';
 
       e.preventDefault();
-      e.target[0].style.height = '18px';
+      e.target[0].focus();
     },
     [onInsert, value],
   );
@@ -45,6 +52,7 @@ const MemoInsert = ({ onInsert }) => {
         value={value}
         onChange={onChange}
         onKeyDown={onKeyDown}
+        autoFocus
       />
       <button type="submit">
         <IoMdArrowDown />
