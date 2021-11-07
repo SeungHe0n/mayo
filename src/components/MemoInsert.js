@@ -13,15 +13,18 @@ const MemoInsert = ({ onInsert }) => {
 
   const onSubmit = useCallback(
     (e) => {
-      if (value === '') {
+      const trimValue = value.trim();
+
+      if (trimValue === '') {
         alert('내용을 입력해주세요.');
       } else {
-        onInsert(value);
-        setValue('');
+        onInsert(trimValue);
       }
 
-      e.preventDefault();
+      setValue('');
       e.target[0].style.height = '1.6875rem';
+
+      e.preventDefault();
       e.target[0].focus();
     },
     [onInsert, value],
