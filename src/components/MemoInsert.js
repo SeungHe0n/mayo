@@ -33,9 +33,10 @@ const MemoInsert = ({ onInsert }) => {
   const onKeyDown = useCallback(
     (e) => {
       if (e.key === 'Enter') {
-        if (e.shiftKey && e.key === 'Enter') {
+        if (e.shiftKey) {
           setValue(value.concat('\n'));
-        } else if (!e.altKey && !e.ctrlKey && !e.shiftKey && !e.metaKey) {
+        }
+        if (!e.altKey && !e.ctrlKey && !e.shiftKey && !e.metaKey) {
           const trimValue = value.trim();
 
           if (trimValue === '') {
