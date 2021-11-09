@@ -30,20 +30,31 @@ const MemoInsert = ({ onInsert }) => {
     [onInsert, value],
   );
 
-  const onKeyDown = (e) => {
-    if (e.shiftKey) {
-      console.log('shift');
-    }
-    if (e.shiftKey && e.which === 13) {
-      console.log('shift + enter');
-    }
-  };
+  const onKeyDown = useCallback(
+    (e) => {
+      if (e.key === 'Enter') {
+        if (e.shiftKey && e.key === 'Enter') {
+          setValue(value.concat('\n'));
+        } else if (!e.altKey && !e.ctrlKey && !e.shiftKey && !e.metaKey) {
+          const trimValue = value.trim();
 
-  // const onKeyDown = useCallback((e) => {
-  //   if(e.shiftKey && e.which === 13) {
-  //     alert()
-  //   }
-  // });
+          if (trimValue === '') {
+            alert('내용을 입력해주세요.');
+          } else {
+            onInsert(trimValue);
+          }
+
+          setValue('');
+          e.target.style.height = '1.6875rem';
+
+          e.preventDefault();
+          e.target.focus();
+          console.log(e);
+        }
+      }
+    },
+    [onInsert, value],
+  );
 
   return (
     <form className="MemoInsert" onSubmit={onSubmit}>
