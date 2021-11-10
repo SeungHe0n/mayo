@@ -1,9 +1,10 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { IoMdArrowDown } from 'react-icons/io';
 import './MemoInsert.scss';
 
 const MemoInsert = ({ onInsert }) => {
   const [value, setValue] = useState('');
+  const memoTextarea = useRef(null);
 
   const onChange = useCallback((e) => {
     setValue(e.target.value);
@@ -22,10 +23,10 @@ const MemoInsert = ({ onInsert }) => {
       }
 
       setValue('');
-      e.target[0].style.height = '1.6875rem';
+      memoTextarea.current.style.height = '1.6875rem';
 
       e.preventDefault();
-      e.target[0].focus();
+      memoTextarea.current.focus();
     },
     [onInsert, value],
   );
@@ -33,28 +34,17 @@ const MemoInsert = ({ onInsert }) => {
   const onKeyDown = useCallback(
     (e) => {
       if (e.key === 'Enter') {
-        if (e.shiftKey) {
-          setValue(value.concat('\n'));
-        }
         if (!e.altKey && !e.ctrlKey && !e.shiftKey && !e.metaKey) {
-          const trimValue = value.trim();
-
-          if (trimValue === '') {
-            alert('내용을 입력해주세요.');
-          } else {
-            onInsert(trimValue);
-          }
-
-          setValue('');
-          e.target.style.height = '1.6875rem';
-
-          e.preventDefault();
-          e.target.focus();
-          console.log(e);
+          onSubmit(e);
+        }
+        if (e.shiftKey || e.ctrlKey) {
+          setValue(value.concat('\n'));
+          e.target.scrollTop = e.target.scrollHeight - e.target.clientHeight;
+          // console.log(e);
         }
       }
     },
-    [onInsert, value],
+    [onSubmit, value],
   );
 
   return (
@@ -65,6 +55,7 @@ const MemoInsert = ({ onInsert }) => {
         onChange={onChange}
         onKeyDown={onKeyDown}
         autoFocus
+        ref={memoTextarea}
       />
       <button type="submit">
         <IoMdArrowDown />
