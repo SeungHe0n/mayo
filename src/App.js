@@ -55,10 +55,24 @@ const App = () => {
     [memos],
   );
 
+  const onEdit = useCallback(
+    (id, text) => {
+      setMemos(
+        memos.map((memo) => (memo.id === id ? { ...memo, text: text } : memo)),
+      );
+    },
+    [memos],
+  );
+
   return (
     <Template>
       <MemoInsert onInsert={onInsert} />
-      <MemoList memos={memos} onRemove={onRemove} onToggle={onToggle} />
+      <MemoList
+        memos={memos}
+        onRemove={onRemove}
+        onToggle={onToggle}
+        onEdit={onEdit}
+      />
     </Template>
   );
 };
