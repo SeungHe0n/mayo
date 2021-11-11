@@ -1,7 +1,7 @@
 import './MemoList.scss';
 import MemoListItem from './MemoListItem';
 
-const MemoList = ({ memos, onRemove, onToggle }) => {
+const MemoList = ({ memos, onRemove, onToggle, onEdit }) => {
   return (
     <div className="MemoList">
       {memos
@@ -13,6 +13,7 @@ const MemoList = ({ memos, onRemove, onToggle }) => {
             key={memo.id}
             onRemove={onRemove}
             onToggle={onToggle}
+            onEdit={onEdit}
           />
         ))}
     </div>
