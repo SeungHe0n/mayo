@@ -51,49 +51,48 @@
       color: #adb5bd;
       text-decoration: line-through;
     }
-    .edit {
-      color: lightgrey;
-    }
-    .remove {
+    .btn {
       color: lightgrey;
     }
   }
 
-  .edit {
+  .btn {
     display: flex;
     align-items: flex-start;
     font-size: 1.5rem;
-    color: #737080;
     cursor: pointer;
-    margin-right: 0.2rem;
+    margin-left: 0.2rem;
     max-height: 2rem;
-    &:hover {
-      color: #929292;
+
+    &.edit {
+      color: #737080;
+      &:hover {
+        color: #929292;
+      }
+    }
+    &.save {
+      color: #6cbd4b;
+      &:hover {
+        color: #9ad483;
+      }
+    }
+    &.remove {
+      color: #ff6b6b;
+      &:hover {
+        color: #ff8787;
+      }
     }
   }
 
-  .save {
-    display: flex;
-    align-items: flex-start;
-    font-size: 1.5rem;
-    color: #6cbd4b;
-    cursor: pointer;
-    margin-right: 0.2rem;
-    max-height: 2rem;
-    &:hover {
-      color: #9ad483;
-    }
-  }
-
-  .remove {
-    display: flex;
-    align-items: flex-start;
-    font-size: 1.5rem;
-    color: #ff6b6b;
-    cursor: pointer;
-    max-height: 2rem;
-    &:hover {
-      color: #ff8787;
-    }
-  }
+  // .remove {
+  //   display: flex;
+  //   align-items: flex-start;
+  //   font-size: 1.5rem;
+  //   color: #ff6b6b;
+  //   cursor: pointer;
+  //   max-height: 2rem;
+  //   &:hover {
+  //     color: #ff8787;
+  //   }
+  // }
 }

@@ -6,14 +6,17 @@ import { useCallback, useState } from 'react';
 const MemoListItem = ({ memo, onRemove, onToggle, onEdit }) => {
   const { id, text, checked } = memo;
 
-  const [editing, setEditing] = useState({ class: 'edit', icon: <MdEdit /> });
+  const [editing, setEditing] = useState({
+    class: 'btn edit',
+    icon: <MdEdit />,
+  });
 
   const onClick = useCallback(
     (e) => {
-      if (editing.class === 'edit') {
-        setEditing({ class: 'save', icon: <MdCheckCircle /> });
+      if (editing.class === 'btn edit') {
+        setEditing({ class: 'btn save', icon: <MdCheckCircle /> });
       } else {
-        setEditing({ class: 'edit', icon: <MdEdit /> });
+        setEditing({ class: 'btn edit', icon: <MdEdit /> });
       }
       console.log(editing.class);
     },
@@ -36,7 +39,7 @@ const MemoListItem = ({ memo, onRemove, onToggle, onEdit }) => {
       <div className={editing.class} onClick={onClick}>
         {editing.icon}
       </div>
-      <div className="remove" onClick={() => onRemove(id)}>
+      <div className="btn remove" onClick={() => onRemove(id)}>
         <MdDelete />
       </div>
     </div>
