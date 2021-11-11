@@ -18,6 +18,27 @@
     line-height: 1.5;
     white-space: pre-wrap;
     font-family: sans-serif;
+    user-select: none;
+  }
+
+  textarea {
+    cursor: pointer;
+    background: none;
+    outline: none;
+    border: none;
+    padding: 0;
+    font-size: 1.125rem;
+    font-family: sans-serif;
+    line-height: 1.5;
+    resize: none;
+    color: black;
+    height: 1.6875rem;
+    max-height: 20rem;
+    flex: 1;
+    user-select: none;
+    &:focus {
+      outline: none;
+    }
   }
 
   &.checked {
@@ -26,8 +47,41 @@
       color: #adb5bd;
       text-decoration: line-through;
     }
+    textarea {
+      color: #adb5bd;
+      text-decoration: line-through;
+    }
+    .edit {
+      color: lightgrey;
+    }
     .remove {
       color: lightgrey;
+    }
+  }
+
+  .edit {
+    display: flex;
+    align-items: flex-start;
+    font-size: 1.5rem;
+    color: #737080;
+    cursor: pointer;
+    margin-right: 0.2rem;
+    max-height: 2rem;
+    &:hover {
+      color: #929292;
+    }
+  }
+
+  .save {
+    display: flex;
+    align-items: flex-start;
+    font-size: 1.5rem;
+    color: #6cbd4b;
+    cursor: pointer;
+    margin-right: 0.2rem;
+    max-height: 2rem;
+    &:hover {
+      color: #9ad483;
     }
   }
 
@@ -37,6 +91,7 @@
     font-size: 1.5rem;
     color: #ff6b6b;
     cursor: pointer;
+    max-height: 2rem;
     &:hover {
       color: #ff8787;
     }
