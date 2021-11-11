@@ -12,7 +12,7 @@ const MemoInsert = ({ onInsert }) => {
     e.target.style.height = e.target.scrollHeight + 'px';
   }, []);
 
-  const onSubmit = useCallback(
+  const onClick = useCallback(
     (e) => {
       const trimValue = value.trim();
 
@@ -34,21 +34,17 @@ const MemoInsert = ({ onInsert }) => {
   const onKeyDown = useCallback(
     (e) => {
       if (e.key === 'Enter') {
-        if (!e.altKey && !e.ctrlKey && !e.shiftKey && !e.metaKey) {
-          onSubmit(e);
-        }
-        if (e.shiftKey || e.ctrlKey) {
-          setValue(value.concat('\n'));
-          e.target.scrollTop = e.target.scrollHeight - e.target.clientHeight;
-          // console.log(e);
+        if (!e.shiftKey && !e.ctrlKey) {
+          onClick(e);
+          console.log(e);
         }
       }
     },
-    [onSubmit, value],
+    [onClick],
   );
 
   return (
-    <form className="MemoInsert" onSubmit={onSubmit}>
+    <form className="MemoInsert">
       <textarea
         placeholder="Memo about your own"
         value={value}
@@ -57,7 +53,7 @@ const MemoInsert = ({ onInsert }) => {
         autoFocus
         ref={memoTextarea}
       />
-      <button type="submit">
+      <button type="submit" onClick={onClick}>
         <IoMdArrowDown />
       </button>
     </form>
