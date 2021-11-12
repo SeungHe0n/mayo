@@ -54,6 +54,7 @@ const MemoListItem = ({ memo, onRemove, onToggle, onEdit }) => {
           onKeyDown={onKeyDown}
           ref={memoTextarea}
           autoFocus
+          spellCheck="false"
         />
       ) : (
         <pre onClick={() => onToggle(id)} readOnly>

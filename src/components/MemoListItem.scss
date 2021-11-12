@@ -19,10 +19,10 @@
     white-space: pre-wrap;
     font-family: sans-serif;
     user-select: none;
+    word-break: break-all;
   }
 
   textarea {
-    cursor: pointer;
     background: #f3f3f3;
     outline: none;
     border: none;
@@ -37,6 +37,7 @@
     max-height: 20rem;
     flex: 1;
     border-radius: 0.3rem;
+    word-break: break-all;
   }
 
   &.checked {

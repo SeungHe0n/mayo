@@ -52,6 +52,7 @@ const MemoInsert = ({ onInsert }) => {
         onKeyDown={onKeyDown}
         autoFocus
         ref={memoTextarea}
+        spellCheck="false"
       />
       <button type="submit" onClick={onClick}>
         <IoMdArrowDown />
