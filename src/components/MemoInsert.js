@@ -8,8 +8,9 @@ const MemoInsert = ({ onInsert }) => {
 
   const onChange = useCallback((e) => {
     setValue(e.target.value);
-    e.target.style.height = '0';
-    e.target.style.height = e.target.scrollHeight + 'px';
+    memoTextarea.current.style.height = '0';
+    memoTextarea.current.style.height =
+      memoTextarea.current.scrollHeight + 'px';
   }, []);
 
   const onClick = useCallback(
