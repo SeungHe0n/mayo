@@ -36,7 +36,6 @@ const MemoInsert = ({ onInsert }) => {
       if (e.key === 'Enter') {
         if (!e.shiftKey && !e.ctrlKey) {
           onClick(e);
-          console.log(e);
         }
       }
     },
