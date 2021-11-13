@@ -7,7 +7,7 @@ const App = () => {
   const [memos, setMemos] = useState([
     {
       id: 1,
-      text: '줄바꿈을 사용하고 싶다면\nshift 혹은 ctrl 키를 누른 상태로 enter 키를 치세요',
+      text: '줄바꿈을 사용하고 싶다면\nSHIFT를 누른 상태로 ENTER를 치세요',
       checked: false,
     },
     {
@@ -55,10 +55,24 @@ const App = () => {
     [memos],
   );
 
+  const onEdit = useCallback(
+    (id, text) => {
+      setMemos(
+        memos.map((memo) => (memo.id === id ? { ...memo, text: text } : memo)),
+      );
+    },
+    [memos],
+  );
+
   return (
     <Template>
       <MemoInsert onInsert={onInsert} />
-      <MemoList memos={memos} onRemove={onRemove} onToggle={onToggle} />
+      <MemoList
+        memos={memos}
+        onRemove={onRemove}
+        onToggle={onToggle}
+        onEdit={onEdit}
+      />
     </Template>
   );
 };
