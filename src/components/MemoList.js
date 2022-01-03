@@ -1,21 +1,23 @@
-import './MemoList.scss';
-import MemoListItem from './MemoListItem';
+// import styled from 'styled-components';
+import Memo from './Memo';
 
-const MemoList = ({ memos, onRemove, onToggle, onEdit }) => {
+const MemoList = () => {
   return (
-    <div className="MemoList">
-      {memos
-        .slice(0)
-        .reverse()
-        .map((memo) => (
-          <MemoListItem
-            memo={memo}
-            key={memo.id}
-            onRemove={onRemove}
-            onToggle={onToggle}
-            onEdit={onEdit}
-          />
-        ))}
+    <div>
+      {/* {memos
+            .slice(0)
+            .reverse()
+            .map((memo) => (
+              <MemoListItem
+                memo={memo}
+                key={memo.id}
+                onRemove={onRemove}
+                onToggle={onToggle}
+                onEdit={onEdit}
+              />
+            ))} */}
+      <Memo />
+      <Memo />
     </div>
   );
 };

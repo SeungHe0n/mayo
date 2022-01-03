@@ -2,16 +2,16 @@ import styled from 'styled-components';
 import { MdSearch, MdMenu } from 'react-icons/md';
 
 const Box = styled.div`
-  background: coral;
-  width: 1300px;
+  width: 1500px;
   margin: 0 auto 2rem auto;
 `;
 
 const Header = styled.div`
   display: flex;
   justify-content: space-between;
-  background: yellow;
-  padding: 1rem 1.5rem;
+  padding: 1.5rem 1.5rem;
+  /* position: fixed; */
+  /* width: 1300px; */
 
   div {
     display: flex;
@@ -27,14 +27,20 @@ const Header = styled.div`
 const Button = styled.div`
   display: flex;
   font-size: 2rem;
+  color: #737080;
 
   &:hover {
-    color: red;
+    color: #929292;
   }
 
   & + & {
     margin-left: 1rem;
   }
+`;
+
+const Main = styled.div`
+  /* padding: 2rem 10rem 0 10rem; */
+  padding: 0 15rem;
 `;
 
 const Template = ({ children }) => {
@@ -51,7 +57,7 @@ const Template = ({ children }) => {
           </Button>
         </div>
       </Header>
-      <div>{children}</div>
+      <Main>{children}</Main>
     </Box>
   );
 };
