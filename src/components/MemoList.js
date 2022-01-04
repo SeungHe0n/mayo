@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import Memo from './Memo';
 
 const Box = styled.div`
-  margin: 0 12%;
+  margin: 0 12% 2rem 12%;
 `;
 
 const MemoList = ({ memos, onRemove, onToggle, onEdit }) => {
