@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { IoMdArrowDown } from 'react-icons/io';
 
 const Form = styled.form`
+  margin: 0 12%;
   display: flex;
   background: #495057;
   border-radius: 1rem;

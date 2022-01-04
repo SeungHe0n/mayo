@@ -1,6 +1,6 @@
 import React, { useState, useRef, useCallback } from 'react';
-import Template from './components/Template';
-import MemoInsert from './components/MemoInsert';
+import Header from './components/Header';
+import MemoInput from './components/MemoInput';
 import MemoList from './components/MemoList';
 
 const App = () => {
@@ -65,15 +65,16 @@ const App = () => {
   );
 
   return (
-    <Template>
-      <MemoInsert onInsert={onInsert} />
+    <>
+      <Header />
+      <MemoInput onInsert={onInsert} />
       <MemoList
         memos={memos}
         onRemove={onRemove}
         onToggle={onToggle}
         onEdit={onEdit}
       />
-    </Template>
+    </>
   );
 };
 

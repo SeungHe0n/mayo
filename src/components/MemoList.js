@@ -1,9 +1,13 @@
-// import styled from 'styled-components';
+import styled from 'styled-components';
 import Memo from './Memo';
+
+const Box = styled.div`
+  margin: 0 12%;
+`;
 
 const MemoList = () => {
   return (
-    <div>
+    <Box>
       {/* {memos
             .slice(0)
             .reverse()
@@ -18,7 +22,7 @@ const MemoList = () => {
             ))} */}
       <Memo />
       <Memo />
-    </div>
+    </Box>
   );
 };
 
