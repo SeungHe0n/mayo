@@ -1,14 +1,18 @@
-import './MemoList.scss';
-import MemoListItem from './MemoListItem';
+import styled from 'styled-components';
+import Memo from './Memo';
+
+const Box = styled.div`
+  margin: 0 12%;
+`;
 
 const MemoList = ({ memos, onRemove, onToggle, onEdit }) => {
   return (
-    <div className="MemoList">
+    <Box>
       {memos
         .slice(0)
         .reverse()
         .map((memo) => (
-          <MemoListItem
+          <Memo
             memo={memo}
             key={memo.id}
             onRemove={onRemove}
@@ -16,7 +20,7 @@ const MemoList = ({ memos, onRemove, onToggle, onEdit }) => {
             onEdit={onEdit}
           />
         ))}
-    </div>
+    </Box>
   );
 };
 

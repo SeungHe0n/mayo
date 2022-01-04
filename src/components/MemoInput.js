@@ -1,8 +1,52 @@
-import { useCallback, useRef, useState } from 'react';
+import styled from 'styled-components';
 import { IoMdArrowDown } from 'react-icons/io';
-import './MemoInsert.scss';
+import { useCallback, useRef, useState } from 'react';
 
-const MemoInsert = ({ onInsert }) => {
+const Form = styled.form`
+  margin: 0 12%;
+  display: flex;
+  background: #495057;
+  border-radius: 1rem;
+`;
+
+const InputArea = styled.textarea`
+  background: none;
+  outline: none;
+  border: none;
+  margin: 1rem;
+  padding: 0;
+  font-size: 1.125rem;
+  font-family: sans-serif;
+  line-height: 1.5;
+  resize: none;
+  color: white;
+  height: 1.6875rem;
+  max-height: 20rem;
+  word-break: break-all;
+
+  &::placeholder {
+    color: lightslategrey;
+  }
+  flex: 1;
+`;
+
+const Button = styled.button`
+  background: none;
+  outline: none;
+  border: none;
+  color: white;
+  padding: 0 1rem 0 0;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+
+  &:hover {
+    color: coral;
+  }
+`;
+
+const MemoInput = ({ onInsert }) => {
   const [value, setValue] = useState('');
   const memoTextarea = useRef(null);
 
@@ -44,8 +88,8 @@ const MemoInsert = ({ onInsert }) => {
   );
 
   return (
-    <form className="MemoInsert">
-      <textarea
+    <Form>
+      <InputArea
         placeholder="Memo about your own"
         value={value}
         onChange={onChange}
@@ -54,11 +98,11 @@ const MemoInsert = ({ onInsert }) => {
         ref={memoTextarea}
         spellCheck="false"
       />
-      <button type="submit" onClick={onClick}>
+      <Button type="submit" onClick={onClick}>
         <IoMdArrowDown />
-      </button>
-    </form>
+      </Button>
+    </Form>
   );
 };
 
-export default MemoInsert;
+export default MemoInput;
