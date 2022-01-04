@@ -5,23 +5,21 @@ const Box = styled.div`
   margin: 0 12%;
 `;
 
-const MemoList = () => {
+const MemoList = ({ memos, onRemove, onToggle, onEdit }) => {
   return (
     <Box>
-      {/* {memos
-            .slice(0)
-            .reverse()
-            .map((memo) => (
-              <MemoListItem
-                memo={memo}
-                key={memo.id}
-                onRemove={onRemove}
-                onToggle={onToggle}
-                onEdit={onEdit}
-              />
-            ))} */}
-      <Memo />
-      <Memo />
+      {memos
+        .slice(0)
+        .reverse()
+        .map((memo) => (
+          <Memo
+            memo={memo}
+            key={memo.id}
+            onRemove={onRemove}
+            onToggle={onToggle}
+            onEdit={onEdit}
+          />
+        ))}
     </Box>
   );
 };
