@@ -1,10 +1,12 @@
 import styled from 'styled-components';
-import { MdSearch, MdMenu } from 'react-icons/md';
+import { ImSearch } from 'react-icons/im';
+import { HiMenu } from 'react-icons/hi';
+import Button from './utils/Button';
 
-const Box = styled.div`
+const Wrap = styled.div`
   display: flex;
   justify-content: space-between;
-  padding: 1.5rem;
+  padding: 1.5rem 2rem;
   /* position: fixed; */
 
   div {
@@ -12,40 +14,23 @@ const Box = styled.div`
     align-items: center;
   }
 
-  // 수정 필요
   .logo {
-    font-size: 1.5rem;
+    font-size: 2rem;
+    font-family: 'Jua', sans-serif;
+    color: #495057;
+    cursor: pointer;
+    user-select: none;
   }
 `;
 
-const Button = styled.div`
-  display: flex;
-  font-size: 2rem;
-  color: #737080;
-
-  &:hover {
-    color: #929292;
-  }
-
-  & + & {
-    margin-left: 1rem;
-  }
-`;
-
-const Header = () => {
+export default function Header() {
   return (
-    <Box>
+    <Wrap>
       <div className="logo">MAYO</div>
       <div>
-        <Button>
-          <MdSearch />
-        </Button>
-        <Button>
-          <MdMenu />
-        </Button>
+        <Button icon={<ImSearch />} color="darkgrey" />
+        <Button icon={<HiMenu />} size={2} color="darkgrey" />
       </div>
-    </Box>
+    </Wrap>
   );
-};
-
-export default Header;
+}

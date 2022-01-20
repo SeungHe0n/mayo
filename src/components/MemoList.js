@@ -1,13 +1,27 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import Memo from './Memo';
 
-const Box = styled.div`
+const Wrap = styled.div`
   margin: 0 12% 2rem 12%;
 `;
 
-const MemoList = ({ memos, onRemove, onToggle, onEdit }) => {
+MemoList.propTypes = {
+  memos: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      text: PropTypes.string.isRequired,
+      checked: PropTypes.bool.isRequired,
+    }),
+  ).isRequired,
+  onRemove: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+};
+
+export default function MemoList({ memos, onRemove, onToggle, onEdit }) {
   return (
-    <Box>
+    <Wrap>
       {memos
         .slice(0)
         .reverse()
@@ -20,8 +34,6 @@ const MemoList = ({ memos, onRemove, onToggle, onEdit }) => {
             onEdit={onEdit}
           />
         ))}
-    </Box>
+    </Wrap>
   );
-};
-
-export default MemoList;
+}
