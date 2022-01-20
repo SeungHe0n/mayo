@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 
 const Wrap = styled.div`
   display: flex;
@@ -46,12 +47,18 @@ const Wrap = styled.div`
   }}
 `;
 
-const Button = ({ icon, size, color, margin, onClick }) => {
+Button.propTypes = {
+  icon: PropTypes.element,
+  size: PropTypes.number,
+  color: PropTypes.string,
+  margin: PropTypes.number,
+  onClick: PropTypes.func,
+};
+
+export default function Button({ icon, size, color, margin, onClick }) {
   return (
     <Wrap size={size} margin={margin} color={color} onClick={onClick}>
       {icon}
     </Wrap>
   );
-};
-
-export default Button;
+}

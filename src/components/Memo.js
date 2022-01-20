@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 import { MdDelete, MdEdit, MdCheckCircle } from 'react-icons/md';
 import { useCallback, useState, useRef } from 'react';
 import Button from './utils/Button';
@@ -63,7 +64,18 @@ const Wrap = styled.div`
   }
 `;
 
-const Memo = ({ memo, onRemove, onToggle, onEdit }) => {
+Memo.propTypes = {
+  memo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+    checked: PropTypes.bool.isRequired,
+  }).isRequired,
+  onRemove: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+};
+
+export default function Memo({ memo, onRemove, onToggle, onEdit }) {
   const { id, text, checked } = memo;
   const [value, setValue] = useState(text);
   const [editFlag, setEditFlag] = useState(false);
@@ -148,6 +160,4 @@ const Memo = ({ memo, onRemove, onToggle, onEdit }) => {
       </Wrap>
     );
   }
-};
-
-export default Memo;
+}

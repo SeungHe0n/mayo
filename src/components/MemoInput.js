@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { IoArrowDown } from 'react-icons/io5';
 import { useCallback, useRef, useState } from 'react';
 
@@ -46,7 +47,11 @@ const Button = styled.button`
   }
 `;
 
-const MemoInput = ({ onInsert }) => {
+MemoInput.propTypes = {
+  onInsert: PropTypes.func.isRequired,
+};
+
+export default function MemoInput({ onInsert }) {
   const [value, setValue] = useState('');
   const memoTextarea = useRef(null);
 
@@ -103,6 +108,4 @@ const MemoInput = ({ onInsert }) => {
       </Button>
     </Form>
   );
-};
-
-export default MemoInput;
+}

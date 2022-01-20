@@ -23,7 +23,7 @@ const Wrap = styled.div`
   }
 `;
 
-const Header = () => {
+export default function Header() {
   return (
     <Wrap>
       <div className="logo">MAYO</div>
@@ -33,6 +33,4 @@ const Header = () => {
       </div>
     </Wrap>
   );
-};
-
-export default Header;
+}
