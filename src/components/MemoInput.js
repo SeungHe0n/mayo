@@ -7,27 +7,27 @@ const Form = styled.form`
   display: flex;
   background: #495057;
   border-radius: 1rem;
-`;
 
-const InputArea = styled.textarea`
-  background: none;
-  outline: none;
-  border: none;
-  margin: 1rem;
-  padding: 0;
-  font-size: 1.125rem;
-  font-family: sans-serif;
-  line-height: 1.5;
-  resize: none;
-  color: white;
-  height: 1.6875rem;
-  max-height: 20rem;
-  word-break: break-all;
+  textarea {
+    background: none;
+    outline: none;
+    border: none;
+    margin: 1rem;
+    padding: 0;
+    font-size: 1.125rem;
+    font-family: sans-serif;
+    line-height: 1.5;
+    resize: none;
+    color: white;
+    height: 1.6875rem;
+    max-height: 20rem;
+    word-break: break-all;
 
-  &::placeholder {
-    color: lightslategrey;
+    &::placeholder {
+      color: lightslategrey;
+    }
+    flex: 1;
   }
-  flex: 1;
 `;
 
 const Button = styled.button`
@@ -89,7 +89,7 @@ const MemoInput = ({ onInsert }) => {
 
   return (
     <Form>
-      <InputArea
+      <textarea
         placeholder="Memo about your own"
         value={value}
         onChange={onChange}
