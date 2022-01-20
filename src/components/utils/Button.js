@@ -46,9 +46,9 @@ const Wrap = styled.div`
   }}
 `;
 
-const Button = ({ icon, size, margin, color }) => {
+const Button = ({ icon, size, color, margin, onClick }) => {
   return (
-    <Wrap size={size} margin={margin} color={color}>
+    <Wrap size={size} margin={margin} color={color} onClick={onClick}>
       {icon}
     </Wrap>
   );

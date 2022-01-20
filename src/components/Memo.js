@@ -57,12 +57,11 @@ const Wrap = styled.div`
         text-decoration: line-through;
       }
     `};
-`;
 
-// const Button = styled.div`
-//   margin-left: 0.2rem;
-//   max-height: 2rem;
-// `;
+  div {
+    max-height: 2rem;
+  }
+`;
 
 const Memo = ({ memo, onRemove, onToggle, onEdit }) => {
   const { id, text, checked } = memo;
@@ -103,9 +102,9 @@ const Memo = ({ memo, onRemove, onToggle, onEdit }) => {
     [onClick],
   );
 
-  return (
-    <Wrap checked={checked}>
-      {editFlag ? (
+  if (editFlag) {
+    return (
+      <Wrap checked={checked}>
         <textarea
           value={value}
           onChange={onChange}
@@ -114,22 +113,41 @@ const Memo = ({ memo, onRemove, onToggle, onEdit }) => {
           autoFocus
           spellCheck="false"
         />
-      ) : (
+        <Button
+          icon={<MdCheckCircle />}
+          color={!checked && 'green'}
+          margin={0.8}
+          onClick={onClick}
+        />
+        <Button
+          icon={<MdDelete />}
+          color={!checked && 'red'}
+          margin={0.2}
+          onClick={() => onRemove(id)}
+        />
+      </Wrap>
+    );
+  } else {
+    return (
+      <Wrap checked={checked}>
         <pre onClick={() => onToggle(id)} readOnly>
           {text}
         </pre>
-      )}
-      <Button
-        color={!checked && (editFlag ? 'green' : 'grey')}
-        onClick={onClick}
-      >
-        {editFlag ? <MdCheckCircle /> : <MdEdit />}
-      </Button>
-      <Button color={!checked && 'red'} onClick={() => onRemove(id)}>
-        <MdDelete />
-      </Button>
-    </Wrap>
-  );
+        <Button
+          icon={<MdEdit />}
+          color={!checked && 'grey'}
+          margin={0.8}
+          onClick={onClick}
+        />
+        <Button
+          icon={<MdDelete />}
+          color={!checked && 'red'}
+          margin={0.2}
+          onClick={() => onRemove(id)}
+        />
+      </Wrap>
+    );
+  }
 };
 
 export default Memo;
