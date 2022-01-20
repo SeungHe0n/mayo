@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { IoMdArrowDown } from 'react-icons/io';
+import { IoArrowDown } from 'react-icons/io5';
 import { useCallback, useRef, useState } from 'react';
 
 const Form = styled.form`
@@ -42,7 +42,7 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    color: coral;
+    color: #ff6b6b;
   }
 `;
 
@@ -99,7 +99,7 @@ const MemoInput = ({ onInsert }) => {
         spellCheck="false"
       />
       <Button type="submit" onClick={onClick}>
-        <IoMdArrowDown />
+        <IoArrowDown />
       </Button>
     </Form>
   );
