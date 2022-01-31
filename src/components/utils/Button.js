@@ -11,11 +11,11 @@ const Wrap = styled.div`
 
   ${(props) => {
     switch (props.color) {
-      case 'darkgrey':
+      case 'navy':
         return css`
-          color: #495057;
+          color: #42526c;
           &:hover {
-            color: #929292;
+            color: #717d91;
           }
         `;
       case 'red':

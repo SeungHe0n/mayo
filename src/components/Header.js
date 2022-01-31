@@ -14,9 +14,9 @@ const Wrap = styled.div`
   }
 
   .logo {
-    font-size: 2rem;
+    font-size: 2.5rem;
     font-family: 'Jua', sans-serif;
-    color: #495057;
+    color: #42526c;
     user-select: none;
   }
 `;
@@ -26,7 +26,7 @@ export default function Header() {
     <Wrap>
       <div className="logo">MAYO</div>
       <div>
-        <Button icon={<ImSearch />} color="darkgrey" />
+        <Button icon={<ImSearch />} size={1.7} color="navy" />
       </div>
     </Wrap>
   );

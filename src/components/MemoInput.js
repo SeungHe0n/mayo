@@ -6,8 +6,9 @@ import { useCallback, useRef, useState } from 'react';
 const Form = styled.form`
   margin: 0 12%;
   display: flex;
-  background: #495057;
+  background: #42526c;
   border-radius: 1rem;
+  box-shadow: -1px -1px 5px lightgray, 4px 4px 5px lightgray;
 
   textarea {
     background: none;
@@ -43,7 +44,7 @@ const Button = styled.button`
   cursor: pointer;
 
   &:hover {
-    color: #ff6b6b;
+    color: #bdc3cc;
   }
 `;
 
