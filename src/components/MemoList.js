@@ -1,10 +1,5 @@
-import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import Memo from './Memo';
-
-const Wrap = styled.div`
-  /* margin: 0 24% 2rem 24%; */
-`;
 
 MemoList.propTypes = {
   memos: PropTypes.arrayOf(
@@ -21,7 +16,7 @@ MemoList.propTypes = {
 
 export default function MemoList({ memos, onRemove, onToggle, onEdit }) {
   return (
-    <Wrap>
+    <>
       {memos
         .slice(0)
         .reverse()
@@ -34,6 +29,6 @@ export default function MemoList({ memos, onRemove, onToggle, onEdit }) {
             onEdit={onEdit}
           />
         ))}
-    </Wrap>
+    </>
   );
 }

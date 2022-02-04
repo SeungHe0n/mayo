@@ -4,7 +4,6 @@ import { IoArrowDown } from 'react-icons/io5';
 import { useCallback, useRef, useState } from 'react';
 
 const Form = styled.form`
-  /* margin: 0 24%; */
   display: flex;
   background: #42526c;
   border-radius: 1.3rem;
