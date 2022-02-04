@@ -4,17 +4,17 @@ import { IoArrowDown } from 'react-icons/io5';
 import { useCallback, useRef, useState } from 'react';
 
 const Form = styled.form`
-  margin: 0 12%;
+  /* margin: 0 24%; */
   display: flex;
   background: #42526c;
-  border-radius: 1rem;
+  border-radius: 1.3rem;
   box-shadow: -1px -1px 5px lightgray, 4px 4px 5px lightgray;
 
   textarea {
     background: none;
     outline: none;
     border: none;
-    margin: 1rem;
+    margin: 1.3rem 1.3rem 1.3rem 1.9rem;
     padding: 0;
     font-size: 1.125rem;
     font-family: sans-serif;
@@ -37,7 +37,7 @@ const Button = styled.button`
   outline: none;
   border: none;
   color: white;
-  padding: 0 1rem 0 0;
+  padding: 0 1.6rem 0 0;
   font-size: 1.5rem;
   display: flex;
   align-items: center;

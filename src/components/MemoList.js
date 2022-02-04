@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Memo from './Memo';
 
 const Wrap = styled.div`
-  margin: 0 12% 2rem 12%;
+  /* margin: 0 24% 2rem 24%; */
 `;
 
 MemoList.propTypes = {
