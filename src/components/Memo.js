@@ -7,10 +7,10 @@ import Button from './utils/Button';
 const Wrap = styled.div`
   display: flex;
   background: white;
-  border-radius: 1rem;
-  border: 2px solid lightgrey;
-  margin-top: 1rem;
-  padding: 1rem;
+  border-radius: 1.3rem;
+  margin-top: 1.3rem;
+  padding: 1.3rem 1.6rem 1.3rem 1.9rem;
+  box-shadow: -1px -1px 5px lightgray, 4px 4px 5px lightgray;
 
   textarea {
     background: #f3f3f3;
@@ -48,7 +48,7 @@ const Wrap = styled.div`
   ${(props) =>
     props.checked &&
     css`
-      background: #dee1e4;
+      background: #e7e7e7;
       pre {
         color: #adb5bd;
         text-decoration: line-through;

@@ -1,8 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: #e9ecef;
-  max-width: 1500px;
+  background-image: url('./lightgrey.jpg');
+  max-width: 1450px;
   margin: auto;
 }
 

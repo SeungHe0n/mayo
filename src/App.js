@@ -2,6 +2,13 @@ import React, { useState, useRef, useCallback } from 'react';
 import Header from './components/Header';
 import MemoInput from './components/MemoInput';
 import MemoList from './components/MemoList';
+import styled from 'styled-components';
+
+const Wrap = styled.div`
+  margin: auto;
+  padding: 0rem 2rem 4rem 2rem;
+  max-width: 725px;
+`;
 
 export default function App() {
   const [memos, setMemos] = useState([
@@ -67,13 +74,15 @@ export default function App() {
   return (
     <>
       <Header />
-      <MemoInput onInsert={onInsert} />
-      <MemoList
-        memos={memos}
-        onRemove={onRemove}
-        onToggle={onToggle}
-        onEdit={onEdit}
-      />
+      <Wrap>
+        <MemoInput onInsert={onInsert} />
+        <MemoList
+          memos={memos}
+          onRemove={onRemove}
+          onToggle={onToggle}
+          onEdit={onEdit}
+        />
+      </Wrap>
     </>
   );
 }
