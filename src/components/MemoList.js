@@ -14,7 +14,13 @@ MemoList.propTypes = {
   onEdit: PropTypes.func.isRequired,
 };
 
-export default function MemoList({ memos, onRemove, onToggle, onEdit }) {
+export default function MemoList({
+  memos,
+  onRemove,
+  onToggle,
+  onEdit,
+  onPopup,
+}) {
   return (
     <>
       {memos
@@ -27,6 +33,7 @@ export default function MemoList({ memos, onRemove, onToggle, onEdit }) {
             onRemove={onRemove}
             onToggle={onToggle}
             onEdit={onEdit}
+            onPopup={onPopup}
           />
         ))}
     </>

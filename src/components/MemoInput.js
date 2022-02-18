@@ -51,7 +51,7 @@ MemoInput.propTypes = {
   onInsert: PropTypes.func.isRequired,
 };
 
-export default function MemoInput({ onInsert }) {
+export default function MemoInput({ onInsert, onPopup }) {
   const [value, setValue] = useState('');
   const memoTextarea = useRef(null);
 
@@ -67,7 +67,8 @@ export default function MemoInput({ onInsert }) {
       const trimValue = value.trim();
 
       if (trimValue === '') {
-        alert('내용을 입력해주세요.');
+        // alert('내용을 입력해주세요.');
+        onPopup();
       } else {
         onInsert(trimValue);
       }
@@ -78,7 +79,7 @@ export default function MemoInput({ onInsert }) {
       e.preventDefault();
       memoTextarea.current.focus();
     },
-    [onInsert, value],
+    [onInsert, value, onPopup],
   );
 
   const onKeyDown = useCallback(

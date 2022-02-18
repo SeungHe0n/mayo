@@ -3,10 +3,11 @@ import Header from './components/Header';
 import MemoInput from './components/MemoInput';
 import MemoList from './components/MemoList';
 import styled from 'styled-components';
+import Popup from './components/utils/Popup';
 
 const Wrap = styled.div`
   margin: auto;
-  padding: 0rem 2rem 4rem 2rem;
+  padding: 105px 2rem 4rem 2rem;
   max-width: 725px;
 `;
 
@@ -71,16 +72,23 @@ export default function App() {
     [memos],
   );
 
+  const [popup, setPopup] = useState(false);
+  const onPopup = () => {
+    setPopup(true);
+  };
+
   return (
     <>
+      {popup && <Popup onClose={() => setPopup(false)} />}
       <Header />
       <Wrap>
-        <MemoInput onInsert={onInsert} />
+        <MemoInput onInsert={onInsert} onPopup={onPopup} />
         <MemoList
           memos={memos}
           onRemove={onRemove}
           onToggle={onToggle}
           onEdit={onEdit}
+          onPopup={onPopup}
         />
       </Wrap>
     </>

@@ -75,7 +75,7 @@ Memo.propTypes = {
   onEdit: PropTypes.func.isRequired,
 };
 
-export default function Memo({ memo, onRemove, onToggle, onEdit }) {
+export default function Memo({ memo, onRemove, onToggle, onEdit, onPopup }) {
   const { id, text, checked } = memo;
   const [value, setValue] = useState(text);
   const [editFlag, setEditFlag] = useState(false);
@@ -87,7 +87,7 @@ export default function Memo({ memo, onRemove, onToggle, onEdit }) {
         const trimValue = value.trim();
 
         if (trimValue === '') {
-          alert('빈 내용입니다.');
+          onPopup();
           setValue(text);
         } else {
           onEdit(id, trimValue);
@@ -96,7 +96,7 @@ export default function Memo({ memo, onRemove, onToggle, onEdit }) {
       }
       setEditFlag(!editFlag);
     },
-    [editFlag, id, value, onEdit, text],
+    [editFlag, id, value, onEdit, text, onPopup],
   );
 
   const onChange = useCallback((e) => {
