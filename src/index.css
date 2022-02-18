@@ -1,13 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background-image: url('./lightgrey.jpg');
-  max-width: 1450px;
-  margin: auto;
-}
-
-body::-webkit-scrollbar {
-  display: none;
+  background-color: white;
+  height: 100%;
 }
 
 div {

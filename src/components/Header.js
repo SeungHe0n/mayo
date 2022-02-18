@@ -2,39 +2,26 @@ import styled from 'styled-components';
 import { ImSearch } from 'react-icons/im';
 import Button from './utils/Button';
 
-const Wrap = styled.div`
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
+export default function Header() {
+  return (
+    <Wrap>
+      <h1>MAYO</h1>
+      <Button icon={<ImSearch />} size={1.5} color="navy" />
+    </Wrap>
+  );
+}
 
-  height: 100px;
-  padding: 1.5rem 2rem;
+const Wrap = styled.div`
+  height: 70px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 
-  background: whitesmoke;
-
-  div {
-    display: flex;
-    align-items: center;
-  }
-
-  .logo {
-    font-size: 2.5rem;
+  h1 {
+    margin: 0;
+    font-size: 2rem;
     font-family: 'Jua', sans-serif;
     color: #42526c;
     user-select: none;
   }
 `;
-
-export default function Header() {
-  return (
-    <Wrap>
-      <div className="logo">MAYO</div>
-      <div>
-        <Button icon={<ImSearch />} size={1.7} color="navy" />
-      </div>
-    </Wrap>
-  );
-}

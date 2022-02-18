@@ -3,17 +3,86 @@ import PropTypes from 'prop-types';
 import { IoArrowDown } from 'react-icons/io5';
 import { useCallback, useRef, useState } from 'react';
 
+MemoInput.propTypes = {
+  onInsert: PropTypes.func.isRequired,
+};
+
+export default function MemoInput({ onInsert, onPopup }) {
+  const [value, setValue] = useState('');
+  const memoTextarea = useRef(null);
+
+  const onChange = useCallback((e) => {
+    setValue(e.target.value);
+    memoTextarea.current.style.height = '0';
+    memoTextarea.current.style.height =
+      memoTextarea.current.scrollHeight + 'px';
+  }, []);
+
+  const onClick = useCallback(
+    (e) => {
+      const trimValue = value.trim();
+
+      if (trimValue === '') {
+        onPopup();
+      } else {
+        onInsert(trimValue);
+      }
+
+      setValue('');
+      memoTextarea.current.style.height = '1.6875rem';
+
+      e.preventDefault();
+      memoTextarea.current.focus();
+    },
+    [onInsert, value, onPopup],
+  );
+
+  const onKeyDown = useCallback(
+    (e) => {
+      if (e.key === 'Enter') {
+        if (!e.shiftKey && !e.ctrlKey) {
+          onClick(e);
+        }
+      }
+    },
+    [onClick],
+  );
+
+  return (
+    <Wrap>
+      <Form>
+        <textarea
+          placeholder="Memo about your own"
+          value={value}
+          onChange={onChange}
+          onKeyDown={onKeyDown}
+          autoFocus
+          ref={memoTextarea}
+          spellCheck="false"
+        />
+        <Button type="submit" onClick={onClick}>
+          <IoArrowDown />
+        </Button>
+      </Form>
+    </Wrap>
+  );
+}
+
+const Wrap = styled.div`
+  padding: 0 5px;
+  width: 100%;
+`;
+
 const Form = styled.form`
   display: flex;
   background: #42526c;
   border-radius: 1.3rem;
-  box-shadow: -1px -1px 5px lightgray, 4px 4px 5px lightgray;
 
   textarea {
     background: none;
     outline: none;
     border: none;
-    margin: 1.3rem 1.3rem 1.3rem 1.9rem;
+    margin: 14px 20px;
     padding: 0;
     font-size: 1.125rem;
     font-family: sans-serif;
@@ -46,67 +115,3 @@ const Button = styled.button`
     color: #bdc3cc;
   }
 `;
-
-MemoInput.propTypes = {
-  onInsert: PropTypes.func.isRequired,
-};
-
-export default function MemoInput({ onInsert, onPopup }) {
-  const [value, setValue] = useState('');
-  const memoTextarea = useRef(null);
-
-  const onChange = useCallback((e) => {
-    setValue(e.target.value);
-    memoTextarea.current.style.height = '0';
-    memoTextarea.current.style.height =
-      memoTextarea.current.scrollHeight + 'px';
-  }, []);
-
-  const onClick = useCallback(
-    (e) => {
-      const trimValue = value.trim();
-
-      if (trimValue === '') {
-        // alert('내용을 입력해주세요.');
-        onPopup();
-      } else {
-        onInsert(trimValue);
-      }
-
-      setValue('');
-      memoTextarea.current.style.height = '1.6875rem';
-
-      e.preventDefault();
-      memoTextarea.current.focus();
-    },
-    [onInsert, value, onPopup],
-  );
-
-  const onKeyDown = useCallback(
-    (e) => {
-      if (e.key === 'Enter') {
-        if (!e.shiftKey && !e.ctrlKey) {
-          onClick(e);
-        }
-      }
-    },
-    [onClick],
-  );
-
-  return (
-    <Form>
-      <textarea
-        placeholder="Memo about your own"
-        value={value}
-        onChange={onChange}
-        onKeyDown={onKeyDown}
-        autoFocus
-        ref={memoTextarea}
-        spellCheck="false"
-      />
-      <Button type="submit" onClick={onClick}>
-        <IoArrowDown />
-      </Button>
-    </Form>
-  );
-}

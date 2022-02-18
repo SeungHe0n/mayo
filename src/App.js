@@ -5,12 +5,6 @@ import MemoList from './components/MemoList';
 import styled from 'styled-components';
 import Popup from './components/utils/Popup';
 
-const Wrap = styled.div`
-  margin: auto;
-  padding: 105px 2rem 4rem 2rem;
-  max-width: 725px;
-`;
-
 export default function App() {
   const [memos, setMemos] = useState([
     {
@@ -78,11 +72,15 @@ export default function App() {
   };
 
   return (
-    <>
+    <Body>
       {popup && <Popup onClose={() => setPopup(false)} />}
-      <Header />
-      <Wrap>
-        <MemoInput onInsert={onInsert} onPopup={onPopup} />
+      <Top>
+        <Wrap>
+          <Header />
+          <MemoInput onInsert={onInsert} onPopup={onPopup} />
+        </Wrap>
+      </Top>
+      <Main>
         <MemoList
           memos={memos}
           onRemove={onRemove}
@@ -90,7 +88,63 @@ export default function App() {
           onEdit={onEdit}
           onPopup={onPopup}
         />
-      </Wrap>
-    </>
+      </Main>
+      <Footer>
+        <p>developed by seungheon Lee .</p>
+      </Footer>
+    </Body>
   );
 }
+
+const Body = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 100vh;
+`;
+
+const Top = styled.header`
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  background-color: white;
+  box-shadow: 0 2px 2px -2px rgb(0 0 0 / 20%);
+  display: flex;
+  justify-content: center;
+`;
+
+const Wrap = styled.div`
+  max-width: 900px;
+  width: 100%;
+  padding: 0 20px;
+  padding-bottom: 10px;
+`;
+
+const Main = styled.main`
+  padding-top: 135px;
+  max-width: 900px;
+  margin: 0 auto;
+  width: 100%;
+`;
+
+const Footer = styled.footer`
+  height: 40px;
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+
+  p {
+    margin: 0;
+    max-width: 900px;
+    width: 100%;
+    text-align: center;
+    font-size: 0.9rem;
+    color: lightgray;
+  }
+`;
