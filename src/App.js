@@ -7,7 +7,7 @@ import Popup from './components/utils/Popup';
 
 const Wrap = styled.div`
   margin: auto;
-  padding: 0rem 2rem 4rem 2rem;
+  padding: 105px 2rem 4rem 2rem;
   max-width: 725px;
 `;
 
