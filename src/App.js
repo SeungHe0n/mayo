@@ -1,23 +1,31 @@
-import React, { useState, useRef, useCallback } from "react";
-import Header from "./components/Header";
-import MemoInput from "./components/MemoInput";
-import MemoList from "./components/MemoList";
+import React, { useState, useRef, useCallback } from 'react';
+import Header from './components/Header';
+import MemoInput from './components/MemoInput';
+import MemoList from './components/MemoList';
+import styled from 'styled-components';
+import Popup from './components/utils/Popup';
 
-const App = () => {
+const Wrap = styled.div`
+  margin: auto;
+  padding: 105px 2rem 4rem 2rem;
+  max-width: 725px;
+`;
+
+export default function App() {
   const [memos, setMemos] = useState([
     {
       id: 1,
-      text: "줄바꿈을 사용하고 싶다면\nSHIFT를 누른 상태로 ENTER를 치세요",
+      text: '줄바꿈을 사용하고 싶다면\nSHIFT를 누른 상태로 ENTER를 치세요',
       checked: false,
     },
     {
       id: 2,
-      text: "아이디어를 해결했다면 클릭해서 줄을 그을 수 있어요",
+      text: '아이디어를 해결했다면 클릭해서 줄을 그을 수 있어요',
       checked: true,
     },
     {
       id: 3,
-      text: "위 입력창에 당신의 아이디어나 생각을 입력하세요",
+      text: '위 입력창에 당신의 아이디어나 생각을 입력하세요',
       checked: false,
     },
   ]);
@@ -64,18 +72,25 @@ const App = () => {
     [memos],
   );
 
+  const [popup, setPopup] = useState(false);
+  const onPopup = () => {
+    setPopup(true);
+  };
+
   return (
     <>
+      {popup && <Popup onClose={() => setPopup(false)} />}
       <Header />
-      <MemoInput onInsert={onInsert} />
-      <MemoList
-        memos={memos}
-        onRemove={onRemove}
-        onToggle={onToggle}
-        onEdit={onEdit}
-      />
+      <Wrap>
+        <MemoInput onInsert={onInsert} onPopup={onPopup} />
+        <MemoList
+          memos={memos}
+          onRemove={onRemove}
+          onToggle={onToggle}
+          onEdit={onEdit}
+          onPopup={onPopup}
+        />
+      </Wrap>
     </>
   );
-};
-
-export default App;
+}

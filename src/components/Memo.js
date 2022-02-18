@@ -1,14 +1,16 @@
 import styled, { css } from 'styled-components';
+import PropTypes from 'prop-types';
 import { MdDelete, MdEdit, MdCheckCircle } from 'react-icons/md';
 import { useCallback, useState, useRef } from 'react';
+import Button from './utils/Button';
 
-const Box = styled.div`
+const Wrap = styled.div`
   display: flex;
   background: white;
-  border-radius: 1rem;
-  border: 2px solid lightgrey;
-  margin-top: 1rem;
-  padding: 1rem;
+  border-radius: 1.3rem;
+  margin-top: 1.3rem;
+  padding: 1.3rem 1.6rem 1.3rem 1.9rem;
+  box-shadow: -1px -1px 5px lightgray, 4px 4px 5px lightgray;
 
   textarea {
     background: #f3f3f3;
@@ -46,7 +48,7 @@ const Box = styled.div`
   ${(props) =>
     props.checked &&
     css`
-      background: #dee1e4;
+      background: #e7e7e7;
       pre {
         color: #adb5bd;
         text-decoration: line-through;
@@ -56,48 +58,24 @@ const Box = styled.div`
         text-decoration: line-through;
       }
     `};
+
+  div {
+    max-height: 2rem;
+  }
 `;
 
-const Button = styled.div`
-  display: flex;
-  align-items: flex-start;
-  font-size: 1.5rem;
-  cursor: pointer;
-  margin-left: 0.2rem;
-  max-height: 2rem;
+Memo.propTypes = {
+  memo: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    text: PropTypes.string.isRequired,
+    checked: PropTypes.bool.isRequired,
+  }).isRequired,
+  onRemove: PropTypes.func.isRequired,
+  onToggle: PropTypes.func.isRequired,
+  onEdit: PropTypes.func.isRequired,
+};
 
-  ${(props) => {
-    switch (props.color) {
-      case 'red':
-        return css`
-          color: #ff6b6b;
-          &:hover {
-            color: #ff8787;
-          }
-        `;
-      case 'green':
-        return css`
-          color: #6cbd4b;
-          &:hover {
-            color: #9ad483;
-          }
-        `;
-      case 'grey':
-        return css`
-          color: #737080;
-          &:hover {
-            color: #929292;
-          }
-        `;
-      default:
-        return css`
-          color: #adb5bd;
-        `;
-    }
-  }}
-`;
-
-const Memo = ({ memo, onRemove, onToggle, onEdit }) => {
+export default function Memo({ memo, onRemove, onToggle, onEdit, onPopup }) {
   const { id, text, checked } = memo;
   const [value, setValue] = useState(text);
   const [editFlag, setEditFlag] = useState(false);
@@ -109,7 +87,7 @@ const Memo = ({ memo, onRemove, onToggle, onEdit }) => {
         const trimValue = value.trim();
 
         if (trimValue === '') {
-          alert('빈 내용입니다.');
+          onPopup();
           setValue(text);
         } else {
           onEdit(id, trimValue);
@@ -118,7 +96,7 @@ const Memo = ({ memo, onRemove, onToggle, onEdit }) => {
       }
       setEditFlag(!editFlag);
     },
-    [editFlag, id, value, onEdit, text],
+    [editFlag, id, value, onEdit, text, onPopup],
   );
 
   const onChange = useCallback((e) => {
@@ -136,9 +114,9 @@ const Memo = ({ memo, onRemove, onToggle, onEdit }) => {
     [onClick],
   );
 
-  return (
-    <Box checked={checked}>
-      {editFlag ? (
+  if (editFlag) {
+    return (
+      <Wrap checked={checked}>
         <textarea
           value={value}
           onChange={onChange}
@@ -147,22 +125,39 @@ const Memo = ({ memo, onRemove, onToggle, onEdit }) => {
           autoFocus
           spellCheck="false"
         />
-      ) : (
+        <Button
+          icon={<MdCheckCircle />}
+          color={!checked && 'green'}
+          margin={0.8}
+          onClick={onClick}
+        />
+        <Button
+          icon={<MdDelete />}
+          color={!checked && 'red'}
+          margin={0.2}
+          onClick={() => onRemove(id)}
+        />
+      </Wrap>
+    );
+  } else {
+    return (
+      <Wrap checked={checked}>
         <pre onClick={() => onToggle(id)} readOnly>
           {text}
         </pre>
-      )}
-      <Button
-        color={!checked && (editFlag ? 'green' : 'grey')}
-        onClick={onClick}
-      >
-        {editFlag ? <MdCheckCircle /> : <MdEdit />}
-      </Button>
-      <Button color={!checked && 'red'} onClick={() => onRemove(id)}>
-        <MdDelete />
-      </Button>
-    </Box>
-  );
-};
-
-export default Memo;
+        <Button
+          icon={<MdEdit />}
+          color={!checked && 'grey'}
+          margin={0.8}
+          onClick={onClick}
+        />
+        <Button
+          icon={<MdDelete />}
+          color={!checked && 'red'}
+          margin={0.2}
+          onClick={() => onRemove(id)}
+        />
+      </Wrap>
+    );
+  }
+}

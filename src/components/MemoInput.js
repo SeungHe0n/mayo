@@ -1,33 +1,34 @@
 import styled from 'styled-components';
-import { IoMdArrowDown } from 'react-icons/io';
+import PropTypes from 'prop-types';
+import { IoArrowDown } from 'react-icons/io5';
 import { useCallback, useRef, useState } from 'react';
 
 const Form = styled.form`
-  margin: 0 12%;
   display: flex;
-  background: #495057;
-  border-radius: 1rem;
-`;
+  background: #42526c;
+  border-radius: 1.3rem;
+  box-shadow: -1px -1px 5px lightgray, 4px 4px 5px lightgray;
 
-const InputArea = styled.textarea`
-  background: none;
-  outline: none;
-  border: none;
-  margin: 1rem;
-  padding: 0;
-  font-size: 1.125rem;
-  font-family: sans-serif;
-  line-height: 1.5;
-  resize: none;
-  color: white;
-  height: 1.6875rem;
-  max-height: 20rem;
-  word-break: break-all;
+  textarea {
+    background: none;
+    outline: none;
+    border: none;
+    margin: 1.3rem 1.3rem 1.3rem 1.9rem;
+    padding: 0;
+    font-size: 1.125rem;
+    font-family: sans-serif;
+    line-height: 1.5;
+    resize: none;
+    color: white;
+    height: 1.6875rem;
+    max-height: 20rem;
+    word-break: break-all;
 
-  &::placeholder {
-    color: lightslategrey;
+    &::placeholder {
+      color: lightslategrey;
+    }
+    flex: 1;
   }
-  flex: 1;
 `;
 
 const Button = styled.button`
@@ -35,18 +36,22 @@ const Button = styled.button`
   outline: none;
   border: none;
   color: white;
-  padding: 0 1rem 0 0;
+  padding: 0 1.6rem 0 0;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
   cursor: pointer;
 
   &:hover {
-    color: coral;
+    color: #bdc3cc;
   }
 `;
 
-const MemoInput = ({ onInsert }) => {
+MemoInput.propTypes = {
+  onInsert: PropTypes.func.isRequired,
+};
+
+export default function MemoInput({ onInsert, onPopup }) {
   const [value, setValue] = useState('');
   const memoTextarea = useRef(null);
 
@@ -62,7 +67,8 @@ const MemoInput = ({ onInsert }) => {
       const trimValue = value.trim();
 
       if (trimValue === '') {
-        alert('내용을 입력해주세요.');
+        // alert('내용을 입력해주세요.');
+        onPopup();
       } else {
         onInsert(trimValue);
       }
@@ -73,7 +79,7 @@ const MemoInput = ({ onInsert }) => {
       e.preventDefault();
       memoTextarea.current.focus();
     },
-    [onInsert, value],
+    [onInsert, value, onPopup],
   );
 
   const onKeyDown = useCallback(
@@ -89,7 +95,7 @@ const MemoInput = ({ onInsert }) => {
 
   return (
     <Form>
-      <InputArea
+      <textarea
         placeholder="Memo about your own"
         value={value}
         onChange={onChange}
@@ -99,10 +105,8 @@ const MemoInput = ({ onInsert }) => {
         spellCheck="false"
       />
       <Button type="submit" onClick={onClick}>
-        <IoMdArrowDown />
+        <IoArrowDown />
       </Button>
     </Form>
   );
-};
-
-export default MemoInput;
+}
