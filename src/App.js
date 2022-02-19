@@ -112,7 +112,8 @@ const Top = styled.header`
 
   width: 100%;
   background-color: white;
-  box-shadow: 0 2px 2px -2px rgb(0 0 0 / 20%);
+  /* box-shadow: 0 2px 2px -2px rgb(0 0 0 / 20%); */
+  box-shadow: 0 0 6px lightgrey;
   display: flex;
   justify-content: center;
 `;
@@ -146,5 +147,6 @@ const Footer = styled.footer`
     text-align: center;
     font-size: 0.9rem;
     color: lightgray;
+    user-select: none;
   }
 `;
