@@ -103,6 +103,24 @@ const Body = styled.div`
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+
+  textarea {
+    overflow-y: scroll;
+    &::-webkit-scrollbar {
+      width: 8px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: transparent;
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: 3px;
+      background-color: rgba(128, 128, 128, 0.7);
+    }
+    &::-webkit-scrollbar-button {
+      width: 0;
+      height: 0;
+    }
+  }
 `;
 
 const Top = styled.header`
