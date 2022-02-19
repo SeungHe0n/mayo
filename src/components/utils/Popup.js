@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 
 export default function Popup({ onClose }) {
-  setTimeout(onClose, 2000);
+  setTimeout(onClose, 1000);
 
   return (
     <Wrap>
       <div>
-        <p>내용을 입력해주세요.</p>
+        <p>빈 내용입니다.</p>
       </div>
     </Wrap>
   );
