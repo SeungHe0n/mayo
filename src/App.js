@@ -71,16 +71,25 @@ export default function App() {
     setPopup(true);
   };
 
+  const [padding, setPadding] = useState(135);
+  const onExpand = (value) => {
+    setPadding(value);
+  };
+
   return (
     <Body>
       {popup && <Popup onClose={() => setPopup(false)} />}
       <Top>
         <Wrap>
           <Header />
-          <MemoInput onInsert={onInsert} onPopup={onPopup} />
+          <MemoInput
+            onInsert={onInsert}
+            onPopup={onPopup}
+            onExpand={onExpand}
+          />
         </Wrap>
       </Top>
-      <Main>
+      <Main padding={padding}>
         <MemoList
           memos={memos}
           onRemove={onRemove}
@@ -144,7 +153,7 @@ const Wrap = styled.div`
 `;
 
 const Main = styled.main`
-  padding-top: 135px;
+  padding-top: ${(props) => props.padding + 'px'};
   max-width: 900px;
   margin: 0 auto;
   width: 100%;

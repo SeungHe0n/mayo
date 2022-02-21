@@ -5,18 +5,28 @@ import { useCallback, useRef, useState } from 'react';
 
 MemoInput.propTypes = {
   onInsert: PropTypes.func.isRequired,
+  onPopup: PropTypes.func.isRequired,
+  onExpand: PropTypes.func.isRequired,
 };
 
-export default function MemoInput({ onInsert, onPopup }) {
+export default function MemoInput({ onInsert, onPopup, onExpand }) {
   const [value, setValue] = useState('');
   const memoTextarea = useRef(null);
 
-  const onChange = useCallback((e) => {
-    setValue(e.target.value);
-    memoTextarea.current.style.height = '0';
-    memoTextarea.current.style.height =
-      memoTextarea.current.scrollHeight + 'px';
-  }, []);
+  const onChange = useCallback(
+    (e) => {
+      setValue(e.target.value);
+
+      memoTextarea.current.style.height = '';
+      memoTextarea.current.style.height =
+        memoTextarea.current.scrollHeight + 1 + 'px';
+
+      if (memoTextarea.current.scrollHeight < 319)
+        onExpand(109 + memoTextarea.current.scrollHeight);
+      else onExpand(428);
+    },
+    [onExpand],
+  );
 
   const onClick = useCallback(
     (e) => {
@@ -30,11 +40,12 @@ export default function MemoInput({ onInsert, onPopup }) {
 
       setValue('');
       memoTextarea.current.style.height = '1.6875rem';
+      onExpand(135);
 
       e.preventDefault();
       memoTextarea.current.focus();
     },
-    [onInsert, value, onPopup],
+    [onInsert, value, onPopup, onExpand],
   );
 
   const onKeyDown = useCallback(
