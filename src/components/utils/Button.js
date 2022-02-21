@@ -1,13 +1,29 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 
+Button.propTypes = {
+  icon: PropTypes.element,
+  size: PropTypes.number,
+  color: PropTypes.string,
+  margin: PropTypes.number,
+  onClick: PropTypes.func,
+};
+
+export default function Button({ icon, size, color, margin, onClick }) {
+  return (
+    <Wrap size={size} margin={margin} color={color} onClick={onClick}>
+      {icon}
+    </Wrap>
+  );
+}
+
 const Wrap = styled.div`
   display: flex;
   cursor: pointer;
   align-items: flex-start;
 
   font-size: ${(props) => (props.size || 1.5) + 'rem'};
-  margin-left: ${(props) => (props.margin || 1) + 'rem'};
+  /* margin-left: ${(props) => (props.margin || 1) + 'rem'}; */
 
   ${(props) => {
     switch (props.color) {
@@ -46,19 +62,3 @@ const Wrap = styled.div`
     }
   }}
 `;
-
-Button.propTypes = {
-  icon: PropTypes.element,
-  size: PropTypes.number,
-  color: PropTypes.string,
-  margin: PropTypes.number,
-  onClick: PropTypes.func,
-};
-
-export default function Button({ icon, size, color, margin, onClick }) {
-  return (
-    <Wrap size={size} margin={margin} color={color} onClick={onClick}>
-      {icon}
-    </Wrap>
-  );
-}
