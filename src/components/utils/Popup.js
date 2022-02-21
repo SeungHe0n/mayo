@@ -1,5 +1,17 @@
 import styled from 'styled-components';
 
+export default function Popup({ onClose }) {
+  setTimeout(onClose, 1000);
+
+  return (
+    <Wrap>
+      <div>
+        <p>빈 내용입니다.</p>
+      </div>
+    </Wrap>
+  );
+}
+
 const Wrap = styled.div`
   background-color: rgba(0, 0, 0, 0.2);
   position: fixed;
@@ -7,6 +19,7 @@ const Wrap = styled.div`
   right: 0;
   left: 0;
   bottom: 0;
+  z-index: 1;
   user-select: none;
   animation: body-fadein 0.3s;
   padding-top: 5rem;
@@ -50,15 +63,3 @@ const Wrap = styled.div`
     }
   }
 `;
-
-export default function Popup({ onClose }) {
-  setTimeout(onClose, 2000);
-
-  return (
-    <Wrap>
-      <div>
-        <p>내용을 입력해주세요.</p>
-      </div>
-    </Wrap>
-  );
-}
