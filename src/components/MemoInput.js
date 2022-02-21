@@ -69,7 +69,6 @@ export default function MemoInput({ onInsert, onPopup }) {
 }
 
 const Wrap = styled.div`
-  padding: 0 5px;
   width: 100%;
 `;
 
