@@ -85,12 +85,12 @@ export default function Memo({ memo, onRemove, onToggle, onEdit, onPopup }) {
         </pre>
         <Button
           icon={<MdEdit />}
-          color={!checked && 'grey'}
+          color={checked ? '' : 'grey'}
           onClick={onClick}
         />
         <Button
           icon={<MdDelete />}
-          color={!checked && 'red'}
+          color={checked ? '' : 'red'}
           onClick={() => onRemove(id)}
         />
       </Wrap>
