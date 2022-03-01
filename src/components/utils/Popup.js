@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export default function Popup({ onClose }) {
-  setTimeout(onClose, 1000);
-
   return (
-    <Wrap>
+    <Wrap onAnimationEnd={onClose}>
       <div>
         <p>빈 내용입니다.</p>
       </div>
@@ -21,7 +19,7 @@ const Wrap = styled.div`
   bottom: 0;
   z-index: 1;
   user-select: none;
-  animation: body-fadein 0.3s;
+  animation: fadein 0.7s 2 alternate;
   padding-top: 5rem;
 
   div {
@@ -32,7 +30,6 @@ const Wrap = styled.div`
     font-size: 1.1rem;
     display: flex;
     align-items: center;
-    animation: box-fadein 0.3s;
 
     margin: 0 auto;
   }
@@ -42,22 +39,14 @@ const Wrap = styled.div`
     margin: 0;
     text-align: center;
   }
-  @keyframes body-fadein {
-    from {
+
+  @keyframes fadein {
+    0% {
       opacity: 0;
       margin-top: -30px;
     }
-    to {
-      opacity: 1;
-      margin-top: 0;
-    }
-  }
-  @keyframes box-fadein {
-    from {
-      opacity: 0;
-      margin-top: -30px;
-    }
-    to {
+    50%,
+    100% {
       opacity: 1;
       margin-top: 0;
     }
