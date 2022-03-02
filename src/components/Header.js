@@ -1,51 +1,27 @@
 import styled from 'styled-components';
-import { MdSearch, MdMenu } from 'react-icons/md';
+import { ImSearch } from 'react-icons/im';
+import Button from './utils/Button';
 
-const Box = styled.div`
+export default function Header() {
+  return (
+    <Wrap>
+      <h1>MAYO</h1>
+      <Button icon={<ImSearch />} size={1.5} color="navy" />
+    </Wrap>
+  );
+}
+
+const Wrap = styled.div`
+  height: 70px;
   display: flex;
   justify-content: space-between;
-  padding: 1.5rem;
-  /* position: fixed; */
+  align-items: center;
 
-  div {
-    display: flex;
-    align-items: center;
-  }
-
-  // 수정 필요
-  .logo {
-    font-size: 1.5rem;
+  h1 {
+    margin: 0;
+    font-size: 2rem;
+    font-family: 'Jua', sans-serif;
+    color: #42526c;
+    user-select: none;
   }
 `;
-
-const Button = styled.div`
-  display: flex;
-  font-size: 2rem;
-  color: #737080;
-
-  &:hover {
-    color: #929292;
-  }
-
-  & + & {
-    margin-left: 1rem;
-  }
-`;
-
-const Header = () => {
-  return (
-    <Box>
-      <div className="logo">MAYO</div>
-      <div>
-        <Button>
-          <MdSearch />
-        </Button>
-        <Button>
-          <MdMenu />
-        </Button>
-      </div>
-    </Box>
-  );
-};
-
-export default Header;
