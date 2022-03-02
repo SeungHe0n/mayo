@@ -19,10 +19,10 @@ export default function MemoInput({ onInsert, onPopup, onExpand }) {
 
       memoTextarea.current.style.height = '';
       memoTextarea.current.style.height =
-        memoTextarea.current.scrollHeight + 1 + 'px';
+        memoTextarea.current.scrollHeight + 'px';
 
-      if (memoTextarea.current.scrollHeight < 319)
-        onExpand(109 + memoTextarea.current.scrollHeight);
+      if (memoTextarea.current.scrollHeight < 298)
+        onExpand(108 + memoTextarea.current.scrollHeight);
       else onExpand(428);
     },
     [onExpand],
