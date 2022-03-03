@@ -105,6 +105,23 @@ const Wrap = styled.div`
   border-radius: 1.3rem;
   padding: 14px 20px;
 
+  margin-top: 10px;
+  animation: down 0.7s;
+
+  @keyframes down {
+    0% {
+      opacity: 0;
+      margin-top: -65px;
+    }
+    30% {
+      opacity: 0;
+    }
+    70%,
+    100% {
+      opacity: 1;
+    }
+  }
+
   textarea {
     background: #f3f3f3;
     outline: none;

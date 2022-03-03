@@ -42,9 +42,5 @@ export default function MemoList({
 }
 
 const Wrap = styled.div`
-  padding: 10px 20px;
-
-  > div + div {
-    margin-top: 10px;
-  }
+  padding: 0 20px;
 `;
