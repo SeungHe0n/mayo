@@ -30,7 +30,7 @@ const Wrap = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 0.8rem;
-    width: 3.5rem;
+    width: 4rem;
     height: 60%;
     transition: all 0.2s ease-in;
 
