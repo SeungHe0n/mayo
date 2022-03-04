@@ -24,4 +24,18 @@ const Wrap = styled.div`
     color: #42526c;
     user-select: none;
   }
+
+  > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.8rem;
+    width: 3.5rem;
+    height: 60%;
+    transition: all 0.2s ease-in;
+
+    :hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+  }
 `;
