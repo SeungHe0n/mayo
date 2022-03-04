@@ -113,7 +113,7 @@ const Wrap = styled.div`
       opacity: 0;
       margin-top: -65px;
     }
-    30% {
+    50% {
       opacity: 0;
     }
     70%,
