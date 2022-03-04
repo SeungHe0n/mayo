@@ -93,6 +93,7 @@ const Form = styled.form`
     outline: none;
     border: none;
     margin: 14px 20px;
+    margin-right: 0;
     padding: 0;
     font-size: 1.125rem;
     font-family: sans-serif;
@@ -115,7 +116,7 @@ const Button = styled.button`
   outline: none;
   border: none;
   color: white;
-  padding: 0 1.6rem 0 0;
+  padding: 0 1.6rem;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
