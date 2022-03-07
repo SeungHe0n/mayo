@@ -76,12 +76,19 @@ export default function App() {
     setPadding(value);
   };
 
+  // search 버튼
+  const [search, setSearch] = useState(false);
+  const onSearch = () => {
+    if (search) setSearch(false);
+    else setSearch(true);
+  };
+
   return (
     <Body>
       {popup && <Popup onClose={() => setPopup(false)} />}
       <Top>
         <Wrap>
-          <Header />
+          <Header onSearch={onSearch} />
           <MemoInput
             onInsert={onInsert}
             onPopup={onPopup}

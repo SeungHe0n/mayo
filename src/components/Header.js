@@ -2,11 +2,11 @@ import styled from 'styled-components';
 import { ImSearch } from 'react-icons/im';
 import Button from './utils/Button';
 
-export default function Header() {
+export default function Header({ onSearch }) {
   return (
     <Wrap>
       <h1>MAYO</h1>
-      <Button icon={<ImSearch />} size={1.5} color="navy" />
+      <Button icon={<ImSearch />} size={1.5} color="navy" onClick={onSearch} />
     </Wrap>
   );
 }
