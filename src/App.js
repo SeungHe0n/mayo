@@ -1,11 +1,10 @@
 import React, { useState, useRef, useCallback } from 'react';
 import Header from './components/Header';
 import MemoInput from './components/MemoInput';
-import MemoList from './components/MemoList';
+import List from './components/List';
 import styled from 'styled-components';
 import Popup from './components/utils/Popup';
 import SearchBar from './components/SearchBar';
-import SearchList from './components/SearchList';
 
 export default function App() {
   const [memos, setMemos] = useState([
@@ -78,7 +77,7 @@ export default function App() {
     setPadding(value);
   };
 
-  // search 상태
+  // search
   const [search, setSearch] = useState(false);
   const onSearch = () => {
     if (search) setSearch(false);
@@ -104,23 +103,14 @@ export default function App() {
         </Wrap>
       </Top>
       <Main padding={padding}>
-        {search ? (
-          <SearchList
-            memos={memos}
-            onRemove={onRemove}
-            onToggle={onToggle}
-            onEdit={onEdit}
-            onPopup={onPopup}
-          />
-        ) : (
-          <MemoList
-            memos={memos}
-            onRemove={onRemove}
-            onToggle={onToggle}
-            onEdit={onEdit}
-            onPopup={onPopup}
-          />
-        )}
+        <List
+          search={search}
+          memos={memos}
+          onRemove={onRemove}
+          onToggle={onToggle}
+          onEdit={onEdit}
+          onPopup={onPopup}
+        />
       </Main>
       <Footer>
         <p>developed by seungheon Lee .</p>

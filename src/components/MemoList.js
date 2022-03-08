@@ -1,5 +1,4 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
 import Memo from './Memo';
 
 MemoList.propTypes = {
@@ -24,7 +23,7 @@ export default function MemoList({
   onPopup,
 }) {
   return (
-    <Wrap>
+    <>
       {memos
         .slice(0)
         .reverse()
@@ -38,10 +37,6 @@ export default function MemoList({
             onPopup={onPopup}
           />
         ))}
-    </Wrap>
+    </>
   );
 }
-
-const Wrap = styled.div`
-  padding: 0 20px;
-`;
