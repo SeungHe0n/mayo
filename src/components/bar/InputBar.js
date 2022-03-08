@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useCallback, useRef, useState } from 'react';
-import InputButton from './InputButton';
+import InputButton from '../button/InputButton';
 
 InputBar.propTypes = {
   onInsert: PropTypes.func.isRequired,

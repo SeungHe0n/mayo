@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import SearchButton from './utils/SearchButton';
+import SearchButton from './button/SearchButton';
 
 Header.propTypes = {
   search: PropTypes.bool.isRequired,

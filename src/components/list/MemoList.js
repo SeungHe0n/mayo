@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
-import Memo from './Memo';
+import Memo from '../Memo';
 
-SearchList.propTypes = {
+MemoList.propTypes = {
   memos: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -15,7 +15,7 @@ SearchList.propTypes = {
   onPopup: PropTypes.func.isRequired,
 };
 
-export default function SearchList({
+export default function MemoList({
   memos,
   onRemove,
   onToggle,

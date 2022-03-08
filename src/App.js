@@ -1,11 +1,11 @@
-import React, { useState, useRef, useCallback } from 'react';
-import Header from './components/Header';
-import Bar from './components/Bar';
-import List from './components/List';
 import styled from 'styled-components';
-import Popup from './components/utils/Popup';
-import Footer from './components/Footer';
+import React, { useState, useRef, useCallback } from 'react';
 import defaultMemo from './defaultMemo';
+import Popup from './components/Popup';
+import Header from './components/Header';
+import Bar from './components/bar/Bar';
+import List from './components/list/List';
+import Footer from './components/Footer';
 
 export default function App() {
   const [memos, setMemos] = useState(defaultMemo);

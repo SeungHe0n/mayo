@@ -1,8 +1,8 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { MdDelete, MdEdit, MdCheckCircle } from 'react-icons/md';
 import { useCallback, useState, useRef } from 'react';
-import Button from './utils/Button';
+import { MdDelete, MdEdit, MdCheckCircle } from 'react-icons/md';
+import Button from './button/Button';
 
 Memo.propTypes = {
   memo: PropTypes.shape({
