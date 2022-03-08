@@ -60,28 +60,22 @@ export default function MemoInput({ onInsert, onPopup, onExpand }) {
   );
 
   return (
-    <Wrap>
-      <Form>
-        <textarea
-          placeholder="Memo about your own"
-          value={value}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          autoFocus
-          ref={memoTextarea}
-          spellCheck="false"
-        />
-        <Button type="submit" onClick={onClick}>
-          <IoArrowDown />
-        </Button>
-      </Form>
-    </Wrap>
+    <Form>
+      <textarea
+        placeholder="Memo about your own"
+        value={value}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        autoFocus
+        ref={memoTextarea}
+        spellCheck="false"
+      />
+      <Button type="submit" onClick={onClick}>
+        <IoArrowDown />
+      </Button>
+    </Form>
   );
 }
-
-const Wrap = styled.div`
-  width: 100%;
-`;
 
 const Form = styled.form`
   display: flex;
