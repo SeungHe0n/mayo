@@ -3,13 +3,13 @@ import PropTypes from 'prop-types';
 import { IoArrowDown } from 'react-icons/io5';
 import { useCallback, useRef, useState } from 'react';
 
-MemoInput.propTypes = {
+InputBar.propTypes = {
   onInsert: PropTypes.func.isRequired,
   onPopup: PropTypes.func.isRequired,
   onExpand: PropTypes.func.isRequired,
 };
 
-export default function MemoInput({ onInsert, onPopup, onExpand }) {
+export default function InputBar({ onInsert, onPopup, onExpand }) {
   const [value, setValue] = useState('');
   const memoTextarea = useRef(null);
 

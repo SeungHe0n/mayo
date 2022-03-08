@@ -1,10 +1,9 @@
 import React, { useState, useRef, useCallback } from 'react';
 import Header from './components/Header';
-import MemoInput from './components/MemoInput';
+import Bar from './components/Bar';
 import List from './components/List';
 import styled from 'styled-components';
 import Popup from './components/utils/Popup';
-import SearchBar from './components/SearchBar';
 
 export default function App() {
   const [memos, setMemos] = useState([
@@ -91,15 +90,12 @@ export default function App() {
       <Top>
         <Wrap>
           <Header search={search} onSearch={onSearch} />
-          {search ? (
-            <SearchBar />
-          ) : (
-            <MemoInput
-              onInsert={onInsert}
-              onPopup={onPopup}
-              onExpand={onExpand}
-            />
-          )}
+          <Bar
+            search={search}
+            onInsert={onInsert}
+            onPopup={onPopup}
+            onExpand={onExpand}
+          />
         </Wrap>
       </Top>
       <Main padding={padding}>
