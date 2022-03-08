@@ -4,6 +4,7 @@ import Bar from './components/Bar';
 import List from './components/List';
 import styled from 'styled-components';
 import Popup from './components/utils/Popup';
+import Footer from './components/Footer';
 
 export default function App() {
   const [memos, setMemos] = useState([
@@ -108,9 +109,7 @@ export default function App() {
           onPopup={onPopup}
         />
       </Main>
-      <Footer>
-        <p>developed by seungheon Lee .</p>
-      </Footer>
+      <Footer />
     </Body>
   );
 }
@@ -169,23 +168,4 @@ const Main = styled.main`
   max-width: 900px;
   margin: 0 auto;
   width: 100%;
-`;
-
-const Footer = styled.footer`
-  height: 40px;
-  margin-top: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-
-  p {
-    margin: 0;
-    max-width: 900px;
-    width: 100%;
-    text-align: center;
-    font-size: 0.9rem;
-    color: lightgray;
-    user-select: none;
-  }
 `;
