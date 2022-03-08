@@ -4,6 +4,8 @@ import MemoInput from './components/MemoInput';
 import MemoList from './components/MemoList';
 import styled from 'styled-components';
 import Popup from './components/utils/Popup';
+import SearchBar from './components/SearchBar';
+import SearchList from './components/SearchList';
 
 export default function App() {
   const [memos, setMemos] = useState([
@@ -85,26 +87,40 @@ export default function App() {
   };
 
   return (
-    <Body>
+    <Body search={search}>
       {popup && <Popup onClose={() => setPopup(false)} />}
       <Top>
         <Wrap>
           <Header search={search} onSearch={onSearch} />
-          <MemoInput
-            onInsert={onInsert}
-            onPopup={onPopup}
-            onExpand={onExpand}
-          />
+          {search ? (
+            <SearchBar />
+          ) : (
+            <MemoInput
+              onInsert={onInsert}
+              onPopup={onPopup}
+              onExpand={onExpand}
+            />
+          )}
         </Wrap>
       </Top>
       <Main padding={padding}>
-        <MemoList
-          memos={memos}
-          onRemove={onRemove}
-          onToggle={onToggle}
-          onEdit={onEdit}
-          onPopup={onPopup}
-        />
+        {search ? (
+          <SearchList
+            memos={memos}
+            onRemove={onRemove}
+            onToggle={onToggle}
+            onEdit={onEdit}
+            onPopup={onPopup}
+          />
+        ) : (
+          <MemoList
+            memos={memos}
+            onRemove={onRemove}
+            onToggle={onToggle}
+            onEdit={onEdit}
+            onPopup={onPopup}
+          />
+        )}
       </Main>
       <Footer>
         <p>developed by seungheon Lee .</p>
@@ -120,6 +136,9 @@ const Body = styled.div`
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+
+  background-color: ${({ search }) => (search ? 'rgba(0, 0, 0, 0.05)' : '')};
+  transition: all 0.2s ease-out;
 
   textarea {
     overflow-y: scroll;
@@ -147,8 +166,6 @@ const Top = styled.header`
   z-index: 1;
 
   width: 100%;
-  background-color: white;
-  /* box-shadow: 0 2px 2px -2px rgb(0 0 0 / 20%); */
   box-shadow: 0 0 6px lightgrey;
   display: flex;
   justify-content: center;

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Memo from './Memo';
 
-MemoList.propTypes = {
+SearchList.propTypes = {
   memos: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -16,7 +16,7 @@ MemoList.propTypes = {
   onPopup: PropTypes.func.isRequired,
 };
 
-export default function MemoList({
+export default function SearchList({
   memos,
   onRemove,
   onToggle,

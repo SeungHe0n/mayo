@@ -9,7 +9,7 @@ Header.propTypes = {
 
 export default function Header({ search, onSearch }) {
   return (
-    <Wrap>
+    <Wrap search={search}>
       <h1>MAYO</h1>
       <SearchButton search={search} onSearch={onSearch} />
     </Wrap>
@@ -26,7 +26,7 @@ const Wrap = styled.div`
     margin: 0;
     font-size: 2rem;
     font-family: 'Jua', sans-serif;
-    color: #42526c;
+    color: ${({ search }) => (search ? '#737080' : '#42526c')};
     user-select: none;
   }
 `;

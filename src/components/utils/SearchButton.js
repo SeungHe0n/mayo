@@ -28,10 +28,10 @@ const Wrap = styled.div`
   font-size: 1.5rem;
   color: #42526c;
 
-  ${(props) => {
-    if (props.search) {
+  ${({ search }) => {
+    if (search) {
       return css`
-        background-color: rgba(0, 0, 0, 0.05);
+        /* background-color: rgba(0, 0, 0, 0.05);  */
         color: #717d91;
       `;
     } else {
