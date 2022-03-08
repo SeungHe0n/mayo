@@ -88,7 +88,7 @@ export default function App() {
   return (
     <Body search={search}>
       {popup && <Popup onClose={() => setPopup(false)} />}
-      <Top>
+      <Top search={search}>
         <Wrap>
           <Header search={search} onSearch={onSearch} />
           <Bar
@@ -122,7 +122,7 @@ const Body = styled.div`
   width: 100%;
   min-height: 100vh;
 
-  background-color: ${({ search }) => (search ? 'rgba(0, 0, 0, 0.05)' : '')};
+  background-color: ${({ search }) => (search ? '#F2F2F2' : '')};
   transition: all 0.2s ease-out;
 
   textarea {
@@ -149,6 +149,7 @@ const Top = styled.header`
   top: 0;
   left: 0;
   z-index: 1;
+  background-color: ${({ search }) => (search ? '#F2F2F2' : 'white')};
 
   width: 100%;
   box-shadow: 0 0 6px lightgrey;

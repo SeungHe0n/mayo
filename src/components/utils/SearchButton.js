@@ -31,13 +31,12 @@ const Wrap = styled.div`
   ${({ search }) => {
     if (search) {
       return css`
-        /* background-color: rgba(0, 0, 0, 0.05);  */
         color: #717d91;
       `;
     } else {
       return css`
         :hover {
-          background-color: rgba(0, 0, 0, 0.05);
+          background-color: #f2f2f2;
           color: #717d91;
         }
       `;
