@@ -1,29 +1,14 @@
-import React, { useState, useRef, useCallback } from 'react';
-import Header from './components/Header';
-import MemoInput from './components/MemoInput';
-import MemoList from './components/MemoList';
 import styled from 'styled-components';
-import Popup from './components/utils/Popup';
+import React, { useState, useRef, useCallback } from 'react';
+import defaultMemo from './defaultMemo';
+import Popup from './components/Popup';
+import Header from './components/Header';
+import Bar from './components/bar/Bar';
+import List from './components/list/List';
+import Footer from './components/Footer';
 
 export default function App() {
-  const [memos, setMemos] = useState([
-    {
-      id: 1,
-      text: '줄바꿈을 사용하고 싶다면\nSHIFT를 누른 상태로 ENTER를 치세요',
-      checked: false,
-    },
-    {
-      id: 2,
-      text: '아이디어를 해결했다면 클릭해서 줄을 그을 수 있어요',
-      checked: true,
-    },
-    {
-      id: 3,
-      text: '위 입력창에 당신의 아이디어나 생각을 입력하세요',
-      checked: false,
-    },
-  ]);
-
+  const [memos, setMemos] = useState(defaultMemo);
   const nextId = useRef(4);
 
   const onInsert = useCallback(
@@ -76,31 +61,45 @@ export default function App() {
     setPadding(value);
   };
 
+  // search
+  const [search, setSearch] = useState(false);
+  const onSearch = () => {
+    if (search) setSearch(false);
+    else setSearch(true);
+  };
+
+  const [keyword, setKeyword] = useState('');
+  const onKeyword = (value) => {
+    setKeyword(value);
+  };
+
   return (
-    <Body>
+    <Body search={search}>
       {popup && <Popup onClose={() => setPopup(false)} />}
-      <Top>
+      <Top search={search}>
         <Wrap>
-          <Header />
-          <MemoInput
+          <Header search={search} onSearch={onSearch} />
+          <Bar
+            search={search}
             onInsert={onInsert}
             onPopup={onPopup}
             onExpand={onExpand}
+            onKeyword={onKeyword}
           />
         </Wrap>
       </Top>
       <Main padding={padding}>
-        <MemoList
+        <List
+          search={search}
           memos={memos}
+          keyword={keyword}
           onRemove={onRemove}
           onToggle={onToggle}
           onEdit={onEdit}
           onPopup={onPopup}
         />
       </Main>
-      <Footer>
-        <p>developed by seungheon Lee .</p>
-      </Footer>
+      <Footer />
     </Body>
   );
 }
@@ -112,6 +111,9 @@ const Body = styled.div`
   justify-content: center;
   width: 100%;
   min-height: 100vh;
+
+  background-color: ${({ search }) => (search ? '#F2F2F2' : '')};
+  transition: all 0.2s ease-out;
 
   textarea {
     overflow-y: scroll;
@@ -136,10 +138,10 @@ const Top = styled.header`
   position: fixed;
   top: 0;
   left: 0;
+  z-index: 1;
+  background-color: ${({ search }) => (search ? '#F2F2F2' : 'white')};
 
   width: 100%;
-  background-color: white;
-  /* box-shadow: 0 2px 2px -2px rgb(0 0 0 / 20%); */
   box-shadow: 0 0 6px lightgrey;
   display: flex;
   justify-content: center;
@@ -157,23 +159,4 @@ const Main = styled.main`
   max-width: 900px;
   margin: 0 auto;
   width: 100%;
-`;
-
-const Footer = styled.footer`
-  height: 40px;
-  margin-top: auto;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-
-  p {
-    margin: 0;
-    max-width: 900px;
-    width: 100%;
-    text-align: center;
-    font-size: 0.9rem;
-    color: lightgray;
-    user-select: none;
-  }
 `;

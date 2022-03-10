@@ -1,15 +1,15 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import { IoArrowDown } from 'react-icons/io5';
 import { useCallback, useRef, useState } from 'react';
+import InputButton from '../button/InputButton';
 
-MemoInput.propTypes = {
+InputBar.propTypes = {
   onInsert: PropTypes.func.isRequired,
   onPopup: PropTypes.func.isRequired,
   onExpand: PropTypes.func.isRequired,
 };
 
-export default function MemoInput({ onInsert, onPopup, onExpand }) {
+export default function InputBar({ onInsert, onPopup, onExpand }) {
   const [value, setValue] = useState('');
   const memoTextarea = useRef(null);
 
@@ -60,28 +60,20 @@ export default function MemoInput({ onInsert, onPopup, onExpand }) {
   );
 
   return (
-    <Wrap>
-      <Form>
-        <textarea
-          placeholder="Memo about your own"
-          value={value}
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          autoFocus
-          ref={memoTextarea}
-          spellCheck="false"
-        />
-        <Button type="submit" onClick={onClick}>
-          <IoArrowDown />
-        </Button>
-      </Form>
-    </Wrap>
+    <Form>
+      <textarea
+        placeholder="Memo about your own"
+        value={value}
+        onChange={onChange}
+        onKeyDown={onKeyDown}
+        autoFocus
+        ref={memoTextarea}
+        spellCheck="false"
+      />
+      <InputButton onClick={onClick} />
+    </Form>
   );
 }
-
-const Wrap = styled.div`
-  width: 100%;
-`;
 
 const Form = styled.form`
   display: flex;
@@ -93,6 +85,7 @@ const Form = styled.form`
     outline: none;
     border: none;
     margin: 14px 20px;
+    margin-right: 0;
     padding: 0;
     font-size: 1.125rem;
     font-family: sans-serif;
@@ -107,21 +100,5 @@ const Form = styled.form`
       color: lightslategrey;
     }
     flex: 1;
-  }
-`;
-
-const Button = styled.button`
-  background: none;
-  outline: none;
-  border: none;
-  color: white;
-  padding: 0 1.6rem 0 0;
-  font-size: 1.5rem;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-
-  &:hover {
-    color: #bdc3cc;
   }
 `;

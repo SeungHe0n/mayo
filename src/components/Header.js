@@ -1,12 +1,17 @@
 import styled from 'styled-components';
-import { ImSearch } from 'react-icons/im';
-import Button from './utils/Button';
+import PropTypes from 'prop-types';
+import SearchButton from './button/SearchButton';
 
-export default function Header() {
+Header.propTypes = {
+  search: PropTypes.bool,
+  onSearch: PropTypes.func,
+};
+
+export default function Header({ search, onSearch }) {
   return (
-    <Wrap>
+    <Wrap search={search}>
       <h1>MAYO</h1>
-      <Button icon={<ImSearch />} size={1.5} color="navy" />
+      <SearchButton search={search} onSearch={onSearch} />
     </Wrap>
   );
 }
@@ -21,7 +26,7 @@ const Wrap = styled.div`
     margin: 0;
     font-size: 2rem;
     font-family: 'Jua', sans-serif;
-    color: #42526c;
+    color: ${({ search }) => (search ? '#737080' : '#42526c')};
     user-select: none;
   }
 `;

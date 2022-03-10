@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
+Popup.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 
 export default function Popup({ onClose }) {
   return (
@@ -17,7 +22,7 @@ const Wrap = styled.div`
   right: 0;
   left: 0;
   bottom: 0;
-  z-index: 1;
+  z-index: 999;
   user-select: none;
   animation: fadein 0.7s 2 alternate;
   padding-top: 5rem;
