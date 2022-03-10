@@ -1,8 +1,9 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { MdDelete, MdEdit, MdCheckCircle } from 'react-icons/md';
 import { useCallback, useState, useRef } from 'react';
-import Button from './utils/Button';
+import EditButton from './button/EditButton';
+import DeleteButton from './button/DeleteButton';
+import ConfirmButton from './button/ConfirmButton';
 
 Memo.propTypes = {
   memo: PropTypes.shape({
@@ -65,16 +66,8 @@ export default function Memo({ memo, onRemove, onToggle, onEdit, onPopup }) {
           autoFocus
           spellCheck="false"
         />
-        <Button
-          icon={<MdCheckCircle />}
-          color={!checked && 'green'}
-          onClick={onClick}
-        />
-        <Button
-          icon={<MdDelete />}
-          color={!checked && 'red'}
-          onClick={() => onRemove(id)}
-        />
+        <ConfirmButton checked={checked} onClick={onClick} />
+        <DeleteButton checked={checked} onClick={() => onRemove(id)} />
       </Wrap>
     );
   } else {
@@ -83,16 +76,8 @@ export default function Memo({ memo, onRemove, onToggle, onEdit, onPopup }) {
         <pre onClick={() => onToggle(id)} readOnly>
           {text}
         </pre>
-        <Button
-          icon={<MdEdit />}
-          color={checked ? '' : 'grey'}
-          onClick={onClick}
-        />
-        <Button
-          icon={<MdDelete />}
-          color={checked ? '' : 'red'}
-          onClick={() => onRemove(id)}
-        />
+        <EditButton checked={checked} onClick={onClick} />
+        <DeleteButton checked={checked} onClick={() => onRemove(id)} />
       </Wrap>
     );
   }
@@ -104,6 +89,23 @@ const Wrap = styled.div`
   border: 2px solid lightgrey;
   border-radius: 1.3rem;
   padding: 14px 20px;
+
+  margin-top: 10px;
+  animation: down 0.7s;
+
+  @keyframes down {
+    0% {
+      opacity: 0;
+      margin-top: -65px;
+    }
+    50% {
+      opacity: 0;
+    }
+    70%,
+    100% {
+      opacity: 1;
+    }
+  }
 
   textarea {
     background: #f3f3f3;
@@ -140,8 +142,8 @@ const Wrap = styled.div`
     word-break: break-all;
   }
 
-  ${(props) =>
-    props.checked &&
+  ${({ checked }) =>
+    checked &&
     css`
       background: #e7e7e7;
       pre {
@@ -153,12 +155,4 @@ const Wrap = styled.div`
         text-decoration: line-through;
       }
     `};
-
-  div {
-    max-height: 2rem;
-  }
-
-  > div + div {
-    margin-left: 5px;
-  }
 `;

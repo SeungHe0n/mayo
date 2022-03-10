@@ -1,8 +1,7 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import Memo from './Memo';
+import Memo from '../Memo';
 
-MemoList.propTypes = {
+SearchList.propTypes = {
   memos: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.number.isRequired,
@@ -10,22 +9,26 @@ MemoList.propTypes = {
       checked: PropTypes.bool.isRequired,
     }),
   ).isRequired,
+  keyword: PropTypes.string.isRequired,
   onRemove: PropTypes.func.isRequired,
   onToggle: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
+  onPopup: PropTypes.func.isRequired,
 };
 
-export default function MemoList({
+export default function SearchList({
   memos,
+  keyword,
   onRemove,
   onToggle,
   onEdit,
   onPopup,
 }) {
   return (
-    <Wrap>
+    <>
       {memos
         .slice(0)
+        .filter((x) => x.text.indexOf(keyword) > -1 && keyword !== '')
         .reverse()
         .map((memo) => (
           <Memo
@@ -37,14 +40,6 @@ export default function MemoList({
             onPopup={onPopup}
           />
         ))}
-    </Wrap>
+    </>
   );
 }
-
-const Wrap = styled.div`
-  padding: 10px 20px;
-
-  > div + div {
-    margin-top: 10px;
-  }
-`;
