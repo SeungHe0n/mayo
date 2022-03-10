@@ -1,4 +1,9 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+
+Popup.propTypes = {
+  onClose: PropTypes.func.isRequired,
+};
 
 export default function Popup({ onClose }) {
   return (
