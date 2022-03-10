@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import SearchButton from './button/SearchButton';
 
 Header.propTypes = {
-  search: PropTypes.bool.isRequired,
-  onSearch: PropTypes.func.isRequired,
+  search: PropTypes.bool,
+  onSearch: PropTypes.func,
 };
 
 export default function Header({ search, onSearch }) {

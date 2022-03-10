@@ -1,9 +1,31 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
+import { useState, useCallback } from 'react';
 
-export default function SearchBar() {
+SearchBar.propTypes = {
+  onKeyword: PropTypes.func.isRequired,
+};
+
+export default function SearchBar({ onKeyword }) {
+  const [value, setValue] = useState('');
+
+  const onChange = useCallback(
+    (e) => {
+      setValue(e.target.value);
+      onKeyword(e.target.value);
+    },
+    [onKeyword],
+  );
+
   return (
     <Form>
-      <textarea placeholder="Search memos =)" autoFocus spellCheck="false" />
+      <textarea
+        placeholder="Search memos =)"
+        autoFocus
+        spellCheck="false"
+        value={value}
+        onChange={onChange}
+      />
     </Form>
   );
 }

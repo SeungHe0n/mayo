@@ -9,6 +9,7 @@ SearchList.propTypes = {
       checked: PropTypes.bool.isRequired,
     }),
   ).isRequired,
+  keyword: PropTypes.string.isRequired,
   onRemove: PropTypes.func.isRequired,
   onToggle: PropTypes.func.isRequired,
   onEdit: PropTypes.func.isRequired,
@@ -17,6 +18,7 @@ SearchList.propTypes = {
 
 export default function SearchList({
   memos,
+  keyword,
   onRemove,
   onToggle,
   onEdit,
@@ -26,6 +28,7 @@ export default function SearchList({
     <>
       {memos
         .slice(0)
+        .filter((x) => x.text.indexOf(keyword) > -1 && keyword !== '')
         .reverse()
         .map((memo) => (
           <Memo

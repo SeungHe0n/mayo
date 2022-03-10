@@ -66,7 +66,11 @@ export default function App() {
   const onSearch = () => {
     if (search) setSearch(false);
     else setSearch(true);
-    console.log(search);
+  };
+
+  const [keyword, setKeyword] = useState('');
+  const onKeyword = (value) => {
+    setKeyword(value);
   };
 
   return (
@@ -80,6 +84,7 @@ export default function App() {
             onInsert={onInsert}
             onPopup={onPopup}
             onExpand={onExpand}
+            onKeyword={onKeyword}
           />
         </Wrap>
       </Top>
@@ -87,6 +92,7 @@ export default function App() {
         <List
           search={search}
           memos={memos}
+          keyword={keyword}
           onRemove={onRemove}
           onToggle={onToggle}
           onEdit={onEdit}

@@ -12,15 +12,17 @@ List.propTypes = {
       checked: PropTypes.bool.isRequired,
     }),
   ).isRequired,
-  onRemove: PropTypes.func.isRequired,
-  onToggle: PropTypes.func.isRequired,
-  onEdit: PropTypes.func.isRequired,
-  onPopup: PropTypes.func.isRequired,
+  keyword: PropTypes.string,
+  onRemove: PropTypes.func,
+  onToggle: PropTypes.func,
+  onEdit: PropTypes.func,
+  onPopup: PropTypes.func,
 };
 
 export default function List({
   search,
   memos,
+  keyword,
   onRemove,
   onToggle,
   onEdit,
@@ -31,6 +33,7 @@ export default function List({
       {search ? (
         <SearchList
           memos={memos}
+          keyword={keyword}
           onRemove={onRemove}
           onToggle={onToggle}
           onEdit={onEdit}

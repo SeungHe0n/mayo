@@ -3,8 +3,8 @@ import PropTypes from 'prop-types';
 import { ImSearch } from 'react-icons/im';
 
 SearchButton.propTypes = {
-  search: PropTypes.bool.isRequired,
-  onSearch: PropTypes.func.isRequired,
+  search: PropTypes.bool,
+  onSearch: PropTypes.func,
 };
 
 export default function SearchButton({ search, onSearch }) {
