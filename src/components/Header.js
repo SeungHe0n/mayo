@@ -10,7 +10,7 @@ Header.propTypes = {
 export default function Header({ search, onSearch }) {
   return (
     <Wrap search={search}>
-      <h1>MAYO</h1>
+      <h1>SINK</h1>
       <SearchButton search={search} onSearch={onSearch} />
     </Wrap>
   );
