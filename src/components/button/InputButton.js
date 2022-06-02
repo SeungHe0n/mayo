@@ -2,12 +2,11 @@ import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { IoArrowDown } from 'react-icons/io5';
 
-SearchButton.propTypes = {
-  search: PropTypes.bool.isRequired,
-  onSearch: PropTypes.func.isRequired,
+InputButton.propTypes = {
+  onClick: PropTypes.func.isRequired,
 };
 
-export default function SearchButton({ onClick }) {
+export default function InputButton({ onClick }) {
   return (
     <Button type="submit" onClick={onClick}>
       <IoArrowDown />
