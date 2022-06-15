@@ -18,12 +18,13 @@ const Button = styled.button`
   background: none;
   outline: none;
   border: none;
-  color: white;
+  color: darkgray;
   padding: 0 1.6rem;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
   cursor: pointer;
+  transition: all 0.2s ease-out;
 
   &:hover {
     color: #bdc3cc;

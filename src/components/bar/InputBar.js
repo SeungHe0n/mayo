@@ -77,7 +77,8 @@ export default function InputBar({ onInsert, onPopup, onExpand }) {
 
 const Form = styled.form`
   display: flex;
-  background: #42526c;
+  background: white;
+  border: 2px solid silver;
   border-radius: 1.3rem;
 
   textarea {
@@ -91,13 +92,13 @@ const Form = styled.form`
     font-family: sans-serif;
     line-height: 1.5;
     resize: none;
-    color: white;
+    color: black;
     height: 1.6875rem;
     max-height: 20rem;
     word-break: break-all;
 
     &::placeholder {
-      color: lightslategrey;
+      color: darkgray;
     }
     flex: 1;
   }

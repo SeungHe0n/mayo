@@ -26,7 +26,8 @@ const Wrap = styled.div`
 
   cursor: pointer;
   font-size: 1.5rem;
-  color: #42526c;
+  /* color: #ffac33; */
+  color: darkgray;
 
   ${({ search }) => {
     if (search) {
