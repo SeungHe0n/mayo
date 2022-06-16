@@ -2,10 +2,10 @@ import styled from 'styled-components';
 import React, { useState, useRef, useCallback } from 'react';
 import defaultMemo from './defaultMemo';
 import Popup from './components/Popup';
-import Header from './components/Header';
-import Bar from './components/bar/Bar';
 import List from './components/list/List';
 import Footer from './components/Footer';
+
+import RealHeader from './components/RealHeader';
 
 export default function App() {
   const [memos, setMemos] = useState(defaultMemo);
@@ -56,7 +56,7 @@ export default function App() {
     setPopup(true);
   };
 
-  const [padding, setPadding] = useState(135);
+  const [padding, setPadding] = useState(187);
   const onExpand = (value) => {
     setPadding(value);
   };
@@ -76,18 +76,14 @@ export default function App() {
   return (
     <Body search={search}>
       {popup && <Popup onClose={() => setPopup(false)} />}
-      <Top search={search}>
-        <Wrap>
-          <Header search={search} onSearch={onSearch} />
-          <Bar
-            search={search}
-            onInsert={onInsert}
-            onPopup={onPopup}
-            onExpand={onExpand}
-            onKeyword={onKeyword}
-          />
-        </Wrap>
-      </Top>
+      <RealHeader
+        search={search}
+        onSearch={onSearch}
+        onInsert={onInsert}
+        onPopup={onPopup}
+        onExpand={onExpand}
+        onKeyword={onKeyword}
+      />
       <Main padding={padding}>
         <List
           search={search}
@@ -132,26 +128,6 @@ const Body = styled.div`
       height: 0;
     }
   }
-`;
-
-const Top = styled.header`
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 1;
-  background-color: ${({ search }) => (search ? '#F2F2F2' : 'white')};
-
-  width: 100%;
-  box-shadow: 0 0 6px lightgrey;
-  display: flex;
-  justify-content: center;
-`;
-
-const Wrap = styled.div`
-  max-width: 900px;
-  width: 100%;
-  padding: 0 20px;
-  padding-bottom: 10px;
 `;
 
 const Main = styled.main`

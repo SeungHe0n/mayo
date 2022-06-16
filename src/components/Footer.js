@@ -22,7 +22,7 @@ const Wrap = styled.footer`
     width: 100%;
     text-align: center;
     font-size: 0.9rem;
-    color: lightgray;
+    color: white;
     user-select: none;
   }
 `;

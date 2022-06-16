@@ -22,7 +22,7 @@ export default function InputBar({ onInsert, onPopup, onExpand }) {
         memoTextarea.current.scrollHeight + 'px';
 
       if (memoTextarea.current.scrollHeight < 298)
-        onExpand(108 + memoTextarea.current.scrollHeight);
+        onExpand(160 + memoTextarea.current.scrollHeight);
       else onExpand(428);
     },
     [onExpand],
@@ -40,7 +40,7 @@ export default function InputBar({ onInsert, onPopup, onExpand }) {
 
       setValue('');
       memoTextarea.current.style.height = '1.6875rem';
-      onExpand(135);
+      onExpand(187);
 
       e.preventDefault();
       memoTextarea.current.focus();
