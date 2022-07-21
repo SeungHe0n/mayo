@@ -1,9 +1,8 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import { useCallback, useState, useRef } from 'react';
-import EditButton from './button/EditButton';
-import DeleteButton from './button/DeleteButton';
-import ConfirmButton from './button/ConfirmButton';
+import { MdCheckCircle, MdEdit, MdDelete } from 'react-icons/md';
+import Button from './UI/Button';
 
 Memo.propTypes = {
   memo: PropTypes.shape({
@@ -55,6 +54,8 @@ export default function Memo({ memo, onRemove, onToggle, onEdit, onPopup }) {
     [onClick],
   );
 
+  const checkedColor = '#adb5bd';
+
   if (editFlag) {
     return (
       <Wrap checked={checked}>
@@ -66,8 +67,20 @@ export default function Memo({ memo, onRemove, onToggle, onEdit, onPopup }) {
           autoFocus
           spellCheck="false"
         />
-        <ConfirmButton checked={checked} onClick={onClick} />
-        <DeleteButton checked={checked} onClick={() => onRemove(id)} />
+        <Button
+          size={'small'}
+          color={checked ? checkedColor : '#6cbd4b'}
+          onClick={onClick}
+        >
+          <MdCheckCircle />
+        </Button>
+        <Button
+          size={'small'}
+          color={checked ? checkedColor : '#ff6b6b'}
+          onClick={() => onRemove(id)}
+        >
+          <MdDelete />
+        </Button>
       </Wrap>
     );
   } else {
@@ -76,8 +89,20 @@ export default function Memo({ memo, onRemove, onToggle, onEdit, onPopup }) {
         <pre onClick={() => onToggle(id)} readOnly>
           {text}
         </pre>
-        <EditButton checked={checked} onClick={onClick} />
-        <DeleteButton checked={checked} onClick={() => onRemove(id)} />
+        <Button
+          size={'small'}
+          color={checked ? checkedColor : '#737080'}
+          onClick={onClick}
+        >
+          <MdEdit />
+        </Button>
+        <Button
+          size={'small'}
+          color={checked ? checkedColor : '#ff6b6b'}
+          onClick={() => onRemove(id)}
+        >
+          <MdDelete />
+        </Button>
       </Wrap>
     );
   }
@@ -155,4 +180,8 @@ const Wrap = styled.div`
         text-decoration: line-through;
       }
     `};
+
+  button + button {
+    margin-left: 0.2rem;
+  }
 `;

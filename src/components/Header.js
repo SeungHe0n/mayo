@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import SearchButton from './button/SearchButton';
+import Button from './UI/Button';
 import { HiSun } from 'react-icons/hi';
+import { ImSearch } from 'react-icons/im';
 
 Header.propTypes = {
   search: PropTypes.bool,
@@ -15,7 +16,14 @@ export default function Header({ search, onSearch }) {
         <HiSun />
         <h1>SINK</h1>
       </Logo>
-      <SearchButton search={search} onSearch={onSearch} />
+      <Button
+        size={'big'}
+        color={'#717d91'}
+        hover={'inverted'}
+        onClick={onSearch}
+      >
+        <ImSearch />
+      </Button>
     </Wrap>
   );
 }

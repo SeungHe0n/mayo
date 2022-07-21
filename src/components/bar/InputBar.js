@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
 import { useCallback, useRef, useState } from 'react';
-import InputButton from '../button/InputButton';
+import Button from '../UI/Button';
+import { IoArrowDown } from 'react-icons/io5';
 
 InputBar.propTypes = {
   onInsert: PropTypes.func.isRequired,
@@ -70,13 +71,16 @@ export default function InputBar({ onInsert, onPopup, onExpand }) {
         ref={memoTextarea}
         spellCheck="false"
       />
-      <InputButton onClick={onClick} />
+      <Button size={'big'} color={'darkgray'} onClick={onClick}>
+        <IoArrowDown />
+      </Button>
     </Form>
   );
 }
 
 const Form = styled.form`
   display: flex;
+  align-items: center;
   background: white;
   border: 2px solid silver;
   border-radius: 1.3rem;
