@@ -2,7 +2,9 @@ import styled from 'styled-components';
 import React, { useState, useRef, useCallback } from 'react';
 import defaultMemo from './defaultMemo';
 import Popup from './components/Popup';
-import List from './components/list/List';
+// import List from './components/list/List';
+import MemoList from './components/UI/MemoList';
+import Memo from './components/Memo';
 import Footer from './components/Footer';
 
 import RealHeader from './components/RealHeader';
@@ -85,15 +87,36 @@ export default function App() {
         onKeyword={onKeyword}
       />
       <Main padding={padding}>
-        <List
-          search={search}
-          memos={memos}
-          keyword={keyword}
-          onRemove={onRemove}
-          onToggle={onToggle}
-          onEdit={onEdit}
-          onPopup={onPopup}
-        />
+        <MemoList>
+          {search
+            ? memos
+                .slice(0)
+                .filter((x) => x.text.indexOf(keyword) > -1 && keyword !== '')
+                .reverse()
+                .map((memo) => (
+                  <Memo
+                    memo={memo}
+                    key={memo.id}
+                    onRemove={onRemove}
+                    onToggle={onToggle}
+                    onEdit={onEdit}
+                    onPopup={onPopup}
+                  />
+                ))
+            : memos
+                .slice(0)
+                .reverse()
+                .map((memo) => (
+                  <Memo
+                    memo={memo}
+                    key={memo.id}
+                    onRemove={onRemove}
+                    onToggle={onToggle}
+                    onEdit={onEdit}
+                    onPopup={onPopup}
+                  />
+                ))}
+        </MemoList>
       </Main>
       <Footer />
     </Body>
