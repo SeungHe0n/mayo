@@ -17,13 +17,13 @@ Button.defaultProps = {
 
 export default function Button({ size, color, hover, onClick, children }) {
   return (
-    <Wrap size={size} color={color} hover={hover} onClick={onClick}>
+    <ButtonStyle size={size} color={color} hover={hover} onClick={onClick}>
       {children}
-    </Wrap>
+    </ButtonStyle>
   );
 }
 
-const Wrap = styled.button`
+const ButtonStyle = styled.button`
   cursor: pointer;
   display: flex;
   justify-content: center;
