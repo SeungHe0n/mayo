@@ -2,13 +2,13 @@ import styled from 'styled-components';
 
 export default function Footer() {
   return (
-    <Wrap>
+    <FooterStyle>
       <p>developed by seungheon Lee .</p>
-    </Wrap>
+    </FooterStyle>
   );
 }
 
-const Wrap = styled.footer`
+const FooterStyle = styled.footer`
   height: 40px;
   margin-top: auto;
   display: flex;

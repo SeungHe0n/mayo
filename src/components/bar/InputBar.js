@@ -64,12 +64,12 @@ export default function InputBar({ onInsert, onPopup, onExpand }) {
     <Form>
       <textarea
         placeholder="Memo about your own"
+        autoFocus
+        spellCheck="false"
         value={value}
         onChange={onChange}
         onKeyDown={onKeyDown}
-        autoFocus
         ref={memoTextarea}
-        spellCheck="false"
       />
       <Button size={'big'} color={'darkgray'} onClick={onClick}>
         <IoArrowDown />
