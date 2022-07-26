@@ -1,16 +1,18 @@
 import styled from 'styled-components';
 import { useState, useCallback, useRef } from 'react';
-import { Link } from 'react-router-dom';
 import { ImSearch } from 'react-icons/im';
 import Popup from '../components/Popup';
 import WaveHeader from '../components/UI/WaveHeader';
 import Logo from '../components/UI/Logo';
-import Button from '../components/UI/Button';
-import InputBar from '../components/InputBar';
+import LinkButton from '../components/UI/LinkButton';
+import InputBar from '../components/UI/InputBar';
 import Memo from '../components/Memo';
 import Footer from '../components/UI/Footer';
 
 export default function Home({ memos, onInsert, onRemove, onToggle, onEdit }) {
+  const HEADERCOLOR = 'white';
+  const WAVECOLOR = '#abd6e7';
+
   const [popup, setPopup] = useState(false);
   const onPopup = () => {
     setPopup(true);
@@ -68,16 +70,19 @@ export default function Home({ memos, onInsert, onRemove, onToggle, onEdit }) {
   );
 
   return (
-    <Body>
-      <WaveHeader color="white" waveColor="#abd6e7">
+    <Body color={WAVECOLOR}>
+      <WaveHeader color={HEADERCOLOR} waveColor={WAVECOLOR}>
         {popup && <Popup onClose={() => setPopup(false)} />}
         <HeaderTop>
           <Logo color={'#ffac33'} content={'SINK'} />
-          <Link to="/sinkof">
-            <Button size={'big'} color={'#717d91'} hover={'inverted'}>
-              <ImSearch />
-            </Button>
-          </Link>
+          <LinkButton
+            to="/sinkof"
+            size={'big'}
+            color={'#717d91'}
+            hover={'inverted'}
+          >
+            <ImSearch />
+          </LinkButton>
         </HeaderTop>
         <InputBar
           placeholder={'당신의 생각을 여기에 적어보세요 !'}
@@ -115,12 +120,10 @@ const Body = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* justify-content: center; */
   width: 100%;
   min-height: 100vh;
   transition: all 0.2s ease-out;
-
-  background-color: #abd6e7;
+  background-color: ${({ color }) => color};
 `;
 
 const HeaderTop = styled.div`
