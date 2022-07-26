@@ -1,22 +1,19 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
-import Button from './UI/Button';
+import Button from './Button';
 import { IoArrowDown } from 'react-icons/io5';
 
 InputBar.propTypes = {
-  darkMode: PropTypes.bool,
   placeholder: PropTypes.string,
   button: PropTypes.bool,
   onButtonClick: PropTypes.func,
 };
 
 InputBar.defaultProps = {
-  darkMode: false,
   button: false,
 };
 
 export default function InputBar({
-  darkMode,
   placeholder,
   button,
   onButtonClick,
@@ -24,7 +21,7 @@ export default function InputBar({
   ...rest
 }) {
   return (
-    <Form darkMode={darkMode} button={button}>
+    <Form button={button}>
       <textarea
         placeholder={placeholder}
         autoFocus
@@ -33,11 +30,7 @@ export default function InputBar({
         {...rest}
       />
       {button && (
-        <Button
-          size={'big'}
-          color={darkMode ? 'white' : 'darkgray'}
-          onClick={onButtonClick}
-        >
+        <Button size={'big'} onClick={onButtonClick}>
           <IoArrowDown />
         </Button>
       )}
@@ -46,7 +39,7 @@ export default function InputBar({
 }
 
 const Form = styled.form`
-  background-color: ${({ darkMode }) => (darkMode ? '#737080' : 'white')};
+  background-color: white;
   display: flex;
   align-items: center;
   border: 2px solid silver;
@@ -69,7 +62,7 @@ const Form = styled.form`
     word-break: break-all;
 
     &::placeholder {
-      color: ${({ darkMode }) => (darkMode ? 'lightgrey' : 'darkgray')};
+      color: silver;
     }
     flex: 1;
   }
