@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
-import { useCallback, useState, useRef } from 'react';
+import { useCallback, useState } from 'react';
 import { MdCheckCircle, MdEdit, MdDelete } from 'react-icons/md';
 import Button from './UI/Button';
 
@@ -19,7 +19,6 @@ export default function Memo({ memo, onRemove, onToggle, onEdit, onPopup }) {
   const { id, text, checked } = memo;
   const [value, setValue] = useState(text);
   const [editFlag, setEditFlag] = useState(false);
-  const memoTextarea = useRef(null);
 
   const onClick = useCallback(
     (e) => {
@@ -63,7 +62,6 @@ export default function Memo({ memo, onRemove, onToggle, onEdit, onPopup }) {
           value={value}
           onChange={onChange}
           onKeyDown={onKeyDown}
-          ref={memoTextarea}
           autoFocus
           spellCheck="false"
         />
